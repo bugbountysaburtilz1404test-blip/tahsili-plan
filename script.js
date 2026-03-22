@@ -230,26 +230,154 @@ document.addEventListener("DOMContentLoaded", () => {
                     submitBtn.style.display = 'flex';
                     submitBtn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> إعادة التوليد';
 
-                    let planText = '';
+                    const d = parseInt(days);
+                    // Calculate phase durations based on level and available days
+                    let phases;
                     if (level === 'beginner') {
-                        planText = `كطالب في البداية وتحتاج للوصول للـ +95 خلال ${days} يوماً، يجب التركيز ٦٠٪ على مرحلة التأسيس (فهم المفاهيم من ناصر عبدالكريم أو يلو) و ٤٠٪ للتدريب على التجميعات.`;
+                        const found = Math.round(d * 0.55);
+                        const train = Math.round(d * 0.30);
+                        const review = d - found - train;
+                        phases = {
+                            foundation: found,
+                            training: train,
+                            finalReview: review,
+                            mathDays: Math.round(found * 0.35),
+                            physicsDays: Math.round(found * 0.25),
+                            chemDays: Math.round(found * 0.22),
+                            bioDays: Math.round(found * 0.18),
+                            strategy: 'تأسيس شامل ← تدريب مكثف ← مراجعة نهائية'
+                        };
                     } else if (level === 'intermediate') {
-                        planText = `مستواك ممتاز يا ${name}! وضعك الحالي يتيح لك تقسيم الـ ${days} يوماً إلى ٤٠٪ مراجعة سريعة لنقاط الضعف و ٦٠٪ حل تجميعات مكثفة (مثل تجميعات غشام والتدريب على سرعة الحل).`;
+                        const found = Math.round(d * 0.30);
+                        const train = Math.round(d * 0.45);
+                        const review = d - found - train;
+                        phases = {
+                            foundation: found,
+                            training: train,
+                            finalReview: review,
+                            mathDays: Math.round(found * 0.30),
+                            physicsDays: Math.round(found * 0.25),
+                            chemDays: Math.round(found * 0.25),
+                            bioDays: Math.round(found * 0.20),
+                            strategy: 'مراجعة سريعة ← تجميعات مكثفة ← تسريبات'
+                        };
                     } else {
-                        planText = `أنت في مرحلة متقدمة وما تحتاجه في الـ ${days} يوم المتبقية هو ١٠٠٪ تدريب على تسريبات وأصعب أفكار التجميعات، بالإضافة لمراجعة دورية لقوانين الدفتر الخارجي لضمان عدم النسيان.`;
+                        const train = Math.round(d * 0.60);
+                        const review = d - train;
+                        phases = {
+                            foundation: 0,
+                            training: train,
+                            finalReview: review,
+                            mathDays: 0,
+                            physicsDays: 0,
+                            chemDays: 0,
+                            bioDays: 0,
+                            strategy: 'تجميعات + تسريبات ← مراجعة قوانين ← اختبار'
+                        };
                     }
 
-                    resultBox.innerHTML = `
-                        <h3 style="color: var(--accent-primary); margin-bottom: 10px;">
-                            <i class="fa-solid fa-check-circle"></i> تم بناء خطتك بنجاح يا ${name}!
-                        </h3>
-                        <p style="margin-bottom: 15px;">بناءً على المعطيات التي أدخلتها، هذا هو المسار الأمثل لك:</p>
-                        <div style="background: rgba(0,0,0,0.35); padding: 20px; border-radius: 16px; border-right: 4px solid var(--accent-primary);">
-                            <p><strong style="color:var(--accent-secondary)">⚡ استراتيجية المذاكرة:</strong> ${planText}</p>
-                            <hr style="border:0; border-top:1px solid rgba(255,255,255,0.08); margin: 12px 0;">
-                            <p style="font-size: 0.9em; color: var(--text-secondary);">
-                            <i class="fa-solid fa-lightbulb" style="color:#fbbf24;"></i> نصيحة إضافية: لا تنسَ أن الأحياء تعتمد على الحفظ المستمر، خصص لها وقتاً قبل النوم يومياً.
+                    const dailyRoutine = `
+                        <div style="background:rgba(126,200,139,0.06);padding:14px 18px;border-radius:12px;border-right:3px solid var(--accent-primary);margin:12px 0;font-size:0.9rem;line-height:2">
+                            <strong style="color:var(--accent-primary)">⏰ الروتين اليومي المقترح:</strong><br>
+                            🌅 <strong>8:00 - 8:05</strong> — قاعدة الـ5 ثواني: عد إلى 5 وابدأ فوراً!<br>
+                            📝 <strong>8:05 - 8:25</strong> — مراجعة يومية: اكتب كل شيء تتذكره من أمس بورقة خارجية<br>
+                            📖 <strong>8:30 - 10:00</strong> — جلسة تأسيس/شرح (50 دقيقة مذاكرة + 10 دقائق راحة)<br>
+                            ✍️ <strong>10:00 - 11:30</strong> — حل أسئلة على ما أخذته فوراً<br>
+                            🕐 <strong>12:00 - 1:30</strong> — جلسة ثانية (مادة مختلفة أو تجميعات)<br>
+                            🌙 <strong>9:00 - 9:30</strong> — مراجعة الأحياء قبل النوم (حفظ)<br>
+                            😴 <strong>10:00</strong> — نوم كافي (8 ساعات — العقل يرتب المعلومات وأنت نايم!)
+                        </div>`;
+
+                    let foundationHTML = '';
+                    if (phases.foundation > 0) {
+                        foundationHTML = `
+                        <div style="background:rgba(0,0,0,0.3);padding:18px;border-radius:14px;margin:15px 0;border-right:4px solid var(--accent-secondary)">
+                            <h4 style="color:var(--accent-secondary);margin:0 0 12px"><i class="fa-solid fa-book-open"></i> المرحلة ١: التأسيس (${phases.foundation} يوم)</h4>
+                            <table style="width:100%;border-collapse:collapse;font-size:0.88rem">
+                                <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
+                                    <td style="padding:8px;color:var(--accent-primary);font-weight:700">📐 الرياضيات</td>
+                                    <td style="padding:8px">يوم 1-${phases.mathDays}</td>
+                                    <td style="padding:8px;color:var(--text-secondary)">صالحة العسيري (يلو) أو العوهلي/مهند (ناصر)</td>
+                                </tr>
+                                <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
+                                    <td style="padding:8px;color:var(--accent-primary);font-weight:700">⚛️ الفيزياء</td>
+                                    <td style="padding:8px">يوم ${phases.mathDays+1}-${phases.mathDays+phases.physicsDays}</td>
+                                    <td style="padding:8px;color:var(--text-secondary)">د.فرح إبراهيم (الأكثر توصية — 3.6M مشاهدة!)</td>
+                                </tr>
+                                <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
+                                    <td style="padding:8px;color:var(--accent-primary);font-weight:700">🧪 الكيمياء</td>
+                                    <td style="padding:8px">يوم ${phases.mathDays+phases.physicsDays+1}-${phases.mathDays+phases.physicsDays+phases.chemDays}</td>
+                                    <td style="padding:8px;color:var(--text-secondary)">أ.محمد العمري (الأفضل بلا منازع) + قروب تليجرام</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:8px;color:var(--accent-primary);font-weight:700">🧬 الأحياء</td>
+                                    <td style="padding:8px">يوم ${phases.mathDays+phases.physicsDays+phases.chemDays+1}-${phases.foundation}</td>
+                                    <td style="padding:8px;color:var(--text-secondary)">أحمد سكول (مختصر وواضح) — 97% حفظ!</td>
+                                </tr>
+                            </table>
+                            <p style="font-size:0.82rem;color:var(--text-secondary);margin:10px 0 0;line-height:1.7">
+                                💡 <strong>ملاحظة:</strong> كل 4-5 أيام خصص يوم كامل للمراجعة. ابدأ بالرياضيات لأنها الأصعب — بعدها بتنطلق بالباقي!
                             </p>
+                        </div>`;
+                    }
+
+                    const trainingHTML = `
+                    <div style="background:rgba(0,0,0,0.3);padding:18px;border-radius:14px;margin:15px 0;border-right:4px solid #E8A849">
+                        <h4 style="color:#E8A849;margin:0 0 12px"><i class="fa-solid fa-dumbbell"></i> المرحلة ${phases.foundation > 0 ? '٢' : '١'}: التدريب والتجميعات (${phases.training} يوم)</h4>
+                        <div style="font-size:0.9rem;line-height:2">
+                            <strong>الترتيب الصحيح:</strong><br>
+                            1️⃣ <strong>تجميعات غشام</strong> — الأهم! أعدها 3-4 مرات (مجانية)<br>
+                            2️⃣ <strong>الحوت فترات 21 و 22</strong> + الحوت الشامل الكبير<br>
+                            3️⃣ <strong>تجميعات يلو</strong> — ممتازة بالذات للأحياء<br>
+                            4️⃣ <strong>الكنز</strong> — مجاني ومصدر إضافي قوي<br>
+                            5️⃣ <strong>سايفر</strong> — قبل الاختبار بأسبوع<br>
+                        </div>
+                        <p style="font-size:0.82rem;color:var(--text-secondary);margin:10px 0 0;background:rgba(232,168,73,0.08);padding:10px 14px;border-radius:10px;line-height:1.7">
+                            ⚡ <strong>حقيقة مهمة:</strong> "٦٥% من الأسئلة نسخ لصق من التجميعات + ١٠% تسريبات. الأحياء ٩٩% منسوخة بالحرف!" — طالب حصل على ١٠٠
+                        </p>
+                    </div>`;
+
+                    const finalHTML = `
+                    <div style="background:rgba(0,0,0,0.3);padding:18px;border-radius:14px;margin:15px 0;border-right:4px solid #5BA8C8">
+                        <h4 style="color:#5BA8C8;margin:0 0 12px"><i class="fa-solid fa-rocket"></i> المرحلة الأخيرة: التسريبات + المراجعة النهائية (${phases.finalReview} يوم)</h4>
+                        <div style="font-size:0.9rem;line-height:2">
+                            <strong>ترتيب التسريبات بالأهمية:</strong><br>
+                            🥇 <strong>محمد</strong> — "محمد ثم محمد ثم محمد — طلع من الاختبار لقى أسئلته عنده!"<br>
+                            🥈 <strong>يلو</strong> — ملفات شاملة ومجانية<br>
+                            🥉 <strong>أينشتاين</strong> — تدريب وتوقعات<br>
+                            4️⃣ <strong>سايفر</strong> — تسريبات قوية<br>
+                        </div>
+                        <p style="font-size:0.82rem;color:var(--text-secondary);margin:10px 0 0;line-height:1.7">
+                            📋 <strong>بين الفترتين:</strong> راجع أخطاءك بالفترة الأولى + حل تسريبات الفترة الثانية. الطلاب عادة يرتفعون بين الفترتين!
+                        </p>
+                    </div>`;
+
+                    const examTips = `
+                    <div style="background:rgba(126,200,139,0.04);padding:14px 18px;border-radius:12px;margin:12px 0;font-size:0.88rem;line-height:2;border:1px solid rgba(126,200,139,0.1)">
+                        <strong style="color:var(--accent-primary)">🎯 نصائح يوم الاختبار:</strong><br>
+                        • حل الأسئلة النظرية أولاً ثم المسائل — وفّر وقت!<br>
+                        • حدد المطلوب قبل المعطيات — القانون يتضح فوراً<br>
+                        • التظليل: خلّه في الـ5 دقائق الأخيرة وتأكد من المراجعة<br>
+                        • لا تأكل سكريات — تزيد الطاقة مؤقتاً ثم خمول!<br>
+                        • نوم كافي الليلة السابقة أهم من ساعة مذاكرة إضافية
+                    </div>`;
+
+                    resultBox.innerHTML = `
+                        <h3 style="color: var(--accent-primary); margin-bottom: 5px;">
+                            <i class="fa-solid fa-check-circle"></i> خطتك جاهزة يا ${name}! 🚀
+                        </h3>
+                        <p style="color:var(--text-secondary);margin-bottom:5px;font-size:0.9rem">
+                            <strong style="color:var(--accent-secondary)">${phases.strategy}</strong> — ${d} يوم | مستوى: ${level === 'beginner' ? 'مبتدئ' : level === 'intermediate' ? 'متوسط' : 'متقدم'}
+                        </p>
+                        ${dailyRoutine}
+                        ${foundationHTML}
+                        ${trainingHTML}
+                        ${finalHTML}
+                        ${examTips}
+                        <div style="text-align:center;margin-top:15px">
+                            <a href="sources.html" style="color:var(--accent-primary);font-weight:700;font-size:0.95rem;text-decoration:underline">
+                                <i class="fa-solid fa-compass"></i> شاهد دليل المصادر الشامل لكل مادة ←
+                            </a>
                         </div>
                     `;
                     resultBox.classList.remove('hidden');
