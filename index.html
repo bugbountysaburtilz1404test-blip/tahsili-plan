@@ -11,15 +11,21 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
+    <div class="organic-blob blob-1"></div>
+    <div class="organic-blob blob-2"></div>
+    <div class="organic-blob blob-3"></div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> مسارك للـ +95</h1>
             <ul class="nav-links">
-            <li><a href="#hero">الرئيسية</a></li>
+            
+            <li><button id="theme-toggle" class="theme-toggle-btn"><i class="fa-solid fa-moon"></i></button></li>
+<li><a href="#hero">الرئيسية</a></li>
             <li><a href="#tips">النصائح الذهبية</a></li>
             <li><a href="#ai-schedule">صانع الجداول</a></li>
             <li><a href="#quiz">بنك الأسئلة</a></li>
@@ -148,7 +154,7 @@
                     </div>
                     
                     <div id="question-image-container" class="question-image-container hidden" style="border-radius:8px; padding:10px; margin-bottom:1.5rem; text-align:center;">
-                        <img id="question-img" src="" alt="مرفق السؤال" style="max-width:100%; height:auto; filter: invert(1) hue-rotate(180deg) brightness(1.5); mix-blend-mode: screen;">
+                        <img id="question-img" src="" alt="مرفق السؤال" class="pdf-image-filter" style="max-width:100%; height:auto;">
                     </div>
                     
                     <div class="options-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom: 1.5rem;">
@@ -212,6 +218,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>
