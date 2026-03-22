@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأسئلة الشائعة | مسارك للـ +95</title>
+    <meta name="description" content="إجابات على أكثر الأسئلة شيوعاً عن التحصيلي: المدة الكافية، المصادر، طريقة المذاكرة، التسجيل، والمزيد">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=12">
+    <style>
+        .faq-hero{padding:140px 20px 50px;text-align:center}
+        .faq-hero h1{font-size:2.5rem;font-weight:900;background:var(--accent-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+        .faq-hero p{color:var(--text-secondary);font-size:1.05rem;max-width:600px;margin:0 auto}
+        .faq-container{max-width:850px;margin:0 auto;padding:0 20px 80px}
+        .faq-item{background:rgba(255,255,255,0.03);border:1px solid rgba(126,200,139,0.1);border-radius:16px;margin-bottom:1rem;overflow:hidden;transition:all 0.3s}
+        .faq-item:hover{border-color:rgba(126,200,139,0.25)}
+        .faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;gap:12px}
+        .faq-q h3{margin:0;font-size:1rem;font-weight:700;color:var(--text-primary);flex:1}
+        .faq-q i{color:var(--accent-primary);transition:transform 0.3s;flex-shrink:0}
+        .faq-q i.open{transform:rotate(180deg)}
+        .faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;padding:0 22px}
+        .faq-a.open{max-height:1000px;padding:0 22px 20px}
+        .faq-a p,.faq-a div{color:var(--text-secondary);line-height:1.9;font-size:0.93rem}
+        .faq-a strong{color:var(--text-primary)}
+        .faq-cat{font-size:1.3rem;font-weight:800;color:var(--accent-secondary);margin:2.5rem 0 1.2rem;display:flex;align-items:center;gap:10px}
+        .back-home{display:inline-flex;align-items:center;gap:8px;color:var(--accent-primary);text-decoration:none;font-weight:600;margin:20px;padding:10px 20px;border:1px solid rgba(126,200,139,0.2);border-radius:12px;transition:all 0.3s}
+        .back-home:hover{background:rgba(126,200,139,0.1)}
+        @media(max-width:768px){.faq-hero h1{font-size:2rem}}
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    <div class="organic-blob blob-1"></div>
+    <div class="organic-blob blob-2"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> مسارك للـ +95</h1>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="experiences.html">التجارب</a></li>
+                <li><a href="sources.html">المصادر</a></li>
+                <li><a href="#faq-general">عام</a></li>
+                <li><a href="#faq-study">المذاكرة</a></li>
+                <li><a href="#faq-exam">الاختبار</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="القائمة"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <section class="faq-hero">
+        <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-right"></i> العودة للرئيسية</a>
+        <h1><i class="fa-solid fa-circle-question"></i> الأسئلة الشائعة</h1>
+        <p>إجابات حقيقية من أصحاب الخبرة على أكثر الأسئلة تكراراً عن التحصيلي</p>
+    </section>
+
+    <div class="faq-container">
+        
+        <h2 class="faq-cat" id="faq-general"><i class="fa-solid fa-compass"></i> أسئلة عامة</h2>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>كم المدة الكافية للمذاكرة؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p>المدة المثالية <strong>4-7 شهور</strong> حسب مستواك. لكن بالسنوات الماضية كثير من الطلاب جابوا درجات عالية ببداية فعلية <strong>3 شهور</strong> قبل الاختبار. حتى <strong>شهر ونص</strong> كافي للمتأخرين إذا كان أساسهم متوسط أو جيد. المهم: كل ساعة بالمذاكرة قاعدة ترفع درجتك!</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>أذاكر مادة مادة أو كلها مع بعض؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p><strong>مادة مادة أفضل</strong> — وابدأ بالأصعب (الرياضيات أو الفيزياء). الأحياء خلّها آخر مادة لأنها كلها حفظ. لكن ما فيه مشكلة تذاكر مادتين مع بعض إذا كنت متأخر — بس خصص لكل مادة يوم عشان ما تتشتت.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>أبدأ بالقدرات أو التحصيلي أولاً؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p><strong>القدرات أولاً بالكامل</strong> — "أكبر غلط إنك تذاكر قدرات وتحصيلي مع بعض". خصص الترم الأول كامل للقدرات ثم ابدأ التحصيلي ببداية الترم الثاني. "لا تبدأ التحصيلي إلا بعد ما تقفل القدرات (+95)".</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>عندي ناصر فقط — يكفي؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p>كتاب ناصر <strong>يكفي بالكامل للتأسيس</strong>. إذا تبغى تستزيد شوف تجميعات يلو من اليوتيوب (مجانية) وركز على القسم الأول. وإذا ما أعجبتك شروحات ناصر شوف شروحات غشام أو يلو من اليوتيوب. ناصر يرتب أفكارك بشكل غير معقول.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>عندي يلو فقط — وش أسوي؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p>استمر معهم وركز على <strong>القسم الأول من التجميعات</strong> وقت التأسيس. يلو عندهم خطة واضحة — الأفضل تمشي عليها. وإذا خلصتهم، زِد عليها أينشتاين المجاني.</p>
+            </div>
+        </div>
+
+        <h2 class="faq-cat" id="faq-study"><i class="fa-solid fa-book-open"></i> المذاكرة والمراجعة</h2>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>كيف أراجع بشكل فعال؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <div>
+                    <strong>المراجعة اليومية:</strong> قبل الدرس الجديد اكتب كل شيء تتذكره من أمس بورقة خارجية ثم قارن مع الكتاب.
+                    <br><br>
+                    <strong>المراجعة الدورية:</strong> كل 4-5 أيام خصص يوم كامل لمراجعة كل شيء.
+                    <br><br>
+                    <strong>أفضل طريقة مراجعة:</strong> حل التجميعات ومراجعة المواضيع المشابهة للسؤال — منها تتدرب ومنها تراجع.
+                    <br><br>
+                    ⚠️ "إذا ما راجعت اعتبر إنك ما ذاكرت!"
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>كيف أحفظ قوانين الفيزياء ولا أنساها؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p><strong>التدريب التدريب التدريب!</strong> فعلاً راح يخليك متمكن بحفظ القوانين. لا تتحطم إذا نسيت قوانين كثيرة وقت التدريب. أكثر قسم قوانينه تلخبط فيها استنتاجات هو <strong>الكهرباء</strong> — تدربوا عليه كثير! وجيبوا ورقة خارجية واكتبوا فيها القوانين وراجعوها دورياً.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>هل ألخص أو لا؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p><strong>تجنبوا التلخيص الكثير</strong> — يأخذ وقت وغالباً بدون فائدة. في ملخصات جاهزة! لكن جيبوا نوت ولصقوها على كل سؤال أو فقرة بالكتاب — "مرة فادتني هذي الحركة". اكتبوا بس الأشياء المهمة جداً لا تكتبوا كل شيء بالدفتر.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>مذاكرتي بطيئة — وش أسوي؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p>مادة الرياضيات تأخذ وقت وطبيعي تشوف تقدم بطيء — شد حيلك! بعد الرياضيات بتنطلق بالمذاكرة. <strong>حطوا تايمر</strong> ضروري وابعدوا عن المشتتات <strong>وقسموا الدرس لأجزاء</strong> عشان تنجزون أسرع. "طريقة الـ 50 دقيقة مذاكرة + 10 دقائق راحة" ممتازة.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>الأحياء — حفظ فقط أو تحتاج شرح؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p>97% حفظ — لكن <strong>لا تسمعوا للي يقول ما تحتاج شرح!</strong> لازم تشوف شرح الدرس لأنه يسهل عليك الحفظ مرة. أحمد سكول يشرح بشكل مختصر وواضح. فيه دروس تحتاج فهم مثل <strong>الوراثة</strong>. والأحياء أسئلته 99% منسوخة من التجميعات بالحرف!</p>
+            </div>
+        </div>
+
+        <h2 class="faq-cat" id="faq-exam"><i class="fa-solid fa-file-lines"></i> الاختبار والتسجيل</h2>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>هل الوقت يكفي بالاختبار؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p><strong>الوقت كافي وزيادة.</strong> الاختبار مو كله مسائل — فيه أسئلة بالأحياء والكيمياء والفيزياء نظرية تحلها بسرعة وتوفر أكثر من 6 دقائق إضافية، غير الأسئلة السهلة التطبيقية المباشرة.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>كم نسبة كل مادة بالاختبار؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <div>
+                    حسب آخر توزيعة لقياس:
+                    <br>• <strong>50%</strong> دروس ثالث ثانوي
+                    <br>• <strong>30%</strong> دروس ثاني ثانوي  
+                    <br>• <strong>20%</strong> دروس أول ثانوي
+                    <br><br>
+                    ⚠️ وزن المواد ليس له علاقة بعدد الأسئلة! الرياضيات والأحياء أهميتهم أعلى بالتصحيح. "فيه نماذج صفحتين متتالية فيها 8-9 أسئلة أحياء"
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>هل أجيب الجوال معي للاختبار؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p>يفضل <strong>ما تجيبه</strong> احتياط. بعض الجامعات منعت دخوله تماماً، وبعضها تطلب تحطه في كيس بلاستيك. مافيه هامش تحل عليه — تحل من نفس ورقة الأسئلة وتظلل في ورقة التظليل.</p>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>وش الفرق بين المبكر والاعتيادي؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <div>
+                    • <strong>المبكر أسهل بمراحل</strong> من حيث الأسئلة
+                    <br>• المبكر خاص بجامعة البترول (KFUPM) 
+                    <br>• لو اختبرت مبكر <strong>ما تنقص</strong> محاولات الاعتيادي
+                    <br>• تقدر تختبر الفترة الثانية فقط وتسحب على الأولى
+                    <br>• يشترط توفر درجة 85 في القدرات <strong>وقت التقديم</strong> على الجامعة (مو وقت التسجيل بالاختبار)
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item fade-in">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <h3>هل أقدر أوقف سنة وأعيد التحصيلي؟</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-a">
+                <p><strong>قرار صائب!</strong> حتى لو أهلك معارضين حاول تقنعهم ووريهم خطتك. السنة الذهبية: قفّل القدرات بالترم الأول ← ابدأ التحصيلي بالترم الثاني ← طور لغتك طوال السنة ← اختبر الستيب والآيلتس. "عندك 24 ساعة باليوم، 8 نوم يبقى 16 ساعة — تقدر تصنع فيها أشياء كثيرة!"</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer" style="border-top:1px solid rgba(126,200,139,0.1);margin-top:40px">
+        <div class="footer-content">
+            <p style="color:var(--text-secondary)">جميع الإجابات مستخلصة من تجارب حقيقية وقناة تحصيلي محمد.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;margin-top:15px;flex-wrap:wrap">
+                <a href="index.html" class="btn-primary" style="display:inline-flex"><i class="fa-solid fa-home"></i> الرئيسية</a>
+                <a href="sources.html" class="btn-secondary" style="display:inline-flex"><i class="fa-solid fa-compass"></i> المصادر</a>
+                <a href="experiences.html" class="btn-secondary" style="display:inline-flex"><i class="fa-solid fa-trophy"></i> التجارب</a>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>جميع الحقوق محفوظة &copy; 2026 | مسارك للـ +95</p></div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+    function toggleFaq(el){
+        const a=el.nextElementSibling;
+        const i=el.querySelector('i');
+        a.classList.toggle('open');
+        i.classList.toggle('open');
+    }
+    document.addEventListener("DOMContentLoaded",()=>{
+        const canvas=document.getElementById('particles-canvas');
+        if(canvas){const ctx=canvas.getContext('2d');let ps=[];function rs(){canvas.width=innerWidth;canvas.height=innerHeight}rs();addEventListener('resize',rs);class P{constructor(){this.r()}r(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.s=Math.random()*2+.5;this.sx=(Math.random()-.5)*.3;this.sy=(Math.random()-.5)*.3;this.o=Math.random()*.3+.1}u(){this.x+=this.sx;this.y+=this.sy;if(this.x<0||this.x>canvas.width)this.sx*=-1;if(this.y<0||this.y>canvas.height)this.sy*=-1}d(){ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fillStyle=`rgba(126,200,139,${this.o})`;ctx.fill()}}for(let i=0;i<35;i++)ps.push(new P);(function a(){ctx.clearRect(0,0,canvas.width,canvas.height);ps.forEach(p=>{p.u();p.d()});requestAnimationFrame(a)})()}
+        const h=document.getElementById('hamburger'),n=document.getElementById('nav-links'),o=document.getElementById('mobile-overlay');
+        function cm(){h.classList.remove('active');n.classList.remove('open');o.classList.remove('active');document.body.style.overflow=''}
+        if(h)h.addEventListener('click',()=>{if(n.classList.contains('open'))cm();else{h.classList.add('active');n.classList.add('open');o.classList.add('active');document.body.style.overflow='hidden'}});
+        if(o)o.addEventListener('click',cm);n.querySelectorAll('a').forEach(l=>l.addEventListener('click',cm));
+        const nb=document.getElementById('navbar');addEventListener('scroll',()=>{nb.classList.toggle('scrolled',scrollY>80)});
+        const b=document.getElementById('back-to-top');addEventListener('scroll',()=>{b.classList.toggle('visible',scrollY>500)});if(b)b.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+        const obs=new IntersectionObserver((e,ob)=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('appear');ob.unobserve(en.target)}})},{threshold:.1});
+        document.querySelectorAll('.fade-in').forEach(f=>obs.observe(f));
+    });
+    </script>
+</body>
+</html>

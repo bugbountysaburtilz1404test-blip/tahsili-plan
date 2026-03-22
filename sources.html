@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل المصادر والتجميعات | مسارك للـ +95</title>
+    <meta name="description" content="أفضل المعلمين والكتب والتجميعات للتحصيلي: ناصر، يلو، غشام، فرح إبراهيم، محمد العمري، أحمد سكول — مع ترتيب بالأهمية">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=12">
+    <style>
+        .src-hero{padding:140px 20px 50px;text-align:center}
+        .src-hero h1{font-size:2.6rem;font-weight:900;background:var(--accent-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+        .src-hero p{color:var(--text-secondary);font-size:1.05rem;max-width:650px;margin:0 auto}
+        .src-container{max-width:900px;margin:0 auto;padding:0 20px 80px}
+        .src-category{margin-bottom:3rem}
+        .src-category h2{font-size:1.6rem;font-weight:800;color:var(--accent-primary);margin-bottom:1.2rem;display:flex;align-items:center;gap:10px}
+        .src-category h2 i{font-size:1.3rem}
+        .src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem}
+        .src-card{background:rgba(255,255,255,0.03);border:1px solid rgba(126,200,139,0.1);border-radius:16px;padding:20px;transition:all 0.3s ease}
+        .src-card:hover{border-color:rgba(126,200,139,0.3);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.25)}
+        .src-card h3{font-size:1.05rem;font-weight:700;color:var(--text-primary);margin:0 0 6px}
+        .src-card p{font-size:0.88rem;color:var(--text-secondary);margin:0 0 10px;line-height:1.7}
+        .src-card .src-tag{display:inline-block;background:rgba(126,200,139,0.1);color:var(--accent-primary);border-radius:10px;padding:2px 10px;font-size:0.78rem;font-weight:600;margin-left:5px}
+        .src-card .src-tag.gold{background:rgba(232,168,73,0.12);color:var(--accent-secondary)}
+        .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(126,200,139,0.3),transparent);margin:50px auto;max-width:400px}
+        .info-box{background:rgba(126,200,139,0.05);border:1px solid rgba(126,200,139,0.15);border-right:4px solid var(--accent-primary);border-radius:16px;padding:20px 25px;margin-bottom:1.5rem;line-height:1.9;color:var(--text-secondary);font-size:0.95rem}
+        .info-box strong{color:var(--text-primary)}
+        .ranking{display:flex;flex-direction:column;gap:1rem}
+        .rank-item{display:flex;align-items:center;gap:15px;background:rgba(255,255,255,0.03);border:1px solid rgba(126,200,139,0.08);border-radius:14px;padding:15px 20px;transition:all 0.3s}
+        .rank-item:hover{border-color:rgba(126,200,139,0.25);background:rgba(126,200,139,0.04)}
+        .rank-num{width:38px;height:38px;border-radius:50%;background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-weight:900;color:#0a1a0d;font-size:1.1rem;flex-shrink:0}
+        .rank-item .rank-info h4{margin:0 0 3px;color:var(--text-primary);font-size:1rem}
+        .rank-item .rank-info p{margin:0;color:var(--text-secondary);font-size:0.85rem;line-height:1.6}
+        .back-home{display:inline-flex;align-items:center;gap:8px;color:var(--accent-primary);text-decoration:none;font-weight:600;margin:20px;padding:10px 20px;border:1px solid rgba(126,200,139,0.2);border-radius:12px;transition:all 0.3s}
+        .back-home:hover{background:rgba(126,200,139,0.1)}
+        @media(max-width:768px){.src-hero h1{font-size:2rem}.src-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    <div class="organic-blob blob-1"></div>
+    <div class="organic-blob blob-2"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> مسارك للـ +95</h1>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="experiences.html">تجارب المتفوقين</a></li>
+                <li><a href="#teachers">المعلمون</a></li>
+                <li><a href="#compilations">التجميعات</a></li>
+                <li><a href="#books">الكتب</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="القائمة"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <section class="src-hero">
+        <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-right"></i> العودة للرئيسية</a>
+        <h1><i class="fa-solid fa-compass"></i> دليل المصادر الشامل</h1>
+        <p>خلاصة +119 تجربة ناجحة — أفضل المعلمين والكتب والتجميعات مرتبة بالأهمية</p>
+    </section>
+
+    <div class="src-container">
+
+        <!-- Teachers Section -->
+        <section id="teachers" class="src-category fade-in">
+            <h2><i class="fa-solid fa-chalkboard-user"></i> أفضل المعلمين حسب المادة</h2>
+            
+            <h3 style="color:var(--accent-secondary);margin:1.5rem 0 1rem;font-size:1.2rem"><i class="fa-solid fa-atom"></i> الفيزياء</h3>
+            <div class="ranking">
+                <div class="rank-item fade-in">
+                    <div class="rank-num">1</div>
+                    <div class="rank-info">
+                        <h4>د. فرح إبراهيم <span class="src-tag">الأكثر توصية</span></h4>
+                        <p>3.6 مليون مشاهدة! شرح كتاب ناصر كامل. "رهيبة بشكل مجنون ما شاء الله" — الأكثر ذكراً في التجارب بلا منافس</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">2</div>
+                    <div class="rank-info">
+                        <h4>أبو راما (تكنوقراطية)</h4>
+                        <p>شرح من كتاب ناصر — مناسب كمصدر ثاني أو لمن يحب شرح مختلف</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">3</div>
+                    <div class="rank-info">
+                        <h4>محمد زيادة (يلو)</h4>
+                        <p>شرح من ناصر ويلو. بعض الطلاب يفضلونه — "أنصح فيه بشدة"</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color:var(--accent-secondary);margin:2rem 0 1rem;font-size:1.2rem"><i class="fa-solid fa-flask"></i> الكيمياء</h3>
+            <div class="ranking">
+                <div class="rank-item fade-in">
+                    <div class="rank-num">1</div>
+                    <div class="rank-info">
+                        <h4>أ. محمد العمري <span class="src-tag">الأكثر توصية</span></h4>
+                        <p>"أفضل من درس الكيمياء بلا منازع" — شرح أكاديمي عميق + قروب تليجرام مفيد جداً</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">2</div>
+                    <div class="rank-info">
+                        <h4>د. فرح إبراهيم</h4>
+                        <p>مناسبة للمركبات العضوية والنقاط الصعبة</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color:var(--accent-secondary);margin:2rem 0 1rem;font-size:1.2rem"><i class="fa-solid fa-calculator"></i> الرياضيات</h3>
+            <div class="ranking">
+                <div class="rank-item fade-in">
+                    <div class="rank-num">1</div>
+                    <div class="rank-info">
+                        <h4>أ. صالحة العسيري (يلو) <span class="src-tag">الأكثر توصية</span></h4>
+                        <p>شرح شامل ومفصل من يلو — كثير من أصحاب المئوية اعتمدوا عليها</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">2</div>
+                    <div class="rank-info">
+                        <h4>أ. عبدالوهاب العوهلي</h4>
+                        <p>شرح كتاب ناصر — خيار ممتاز لمن يريد التأسيس من ناصر</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">3</div>
+                    <div class="rank-info">
+                        <h4>أ. مهند</h4>
+                        <p>شرح رياضيات ناصر باليوتيوب — "جداً ممتاز"</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">4</div>
+                    <div class="rank-info">
+                        <h4>أ. نادية بدوي (يلو)</h4>
+                        <p>خيار إضافي من شروحات يلو</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color:var(--accent-secondary);margin:2rem 0 1rem;font-size:1.2rem"><i class="fa-solid fa-dna"></i> الأحياء</h3>
+            <div class="ranking">
+                <div class="rank-item fade-in">
+                    <div class="rank-num">1</div>
+                    <div class="rank-info">
+                        <h4>أحمد سكول <span class="src-tag">الأكثر توصية</span></h4>
+                        <p>"جبار جداً" — شرح المنهج كامل + ملخصات + عروض. "رهيب، يشرح بشكل مختصر وواضح"</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">2</div>
+                    <div class="rank-info">
+                        <h4>د. طلحة توفيق</h4>
+                        <p>"شامل + ملون + مريح + يربط المعلومات" — خيار ممتاز كمصدر ثاني</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">3</div>
+                    <div class="rank-info">
+                        <h4>يلو (أحياء)</h4>
+                        <p>"حرفياً الاختبار كله من يلو" — ملفات شاملة وكافية</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Books Section -->
+        <section id="books" class="src-category fade-in">
+            <h2><i class="fa-solid fa-book"></i> الكتب والمصادر الأساسية</h2>
+            <div class="src-grid">
+                <div class="src-card fade-in">
+                    <h3>📕 كتاب ناصر عبدالكريم</h3>
+                    <p>الأكثر استخداماً. يجمع التأسيس والتدريب معاً. نسخة 2023 استثنائية بسبب شروحات المعلمين المميزة لها.</p>
+                    <span class="src-tag">الأساس</span>
+                </div>
+                <div class="src-card fade-in">
+                    <h3>📗 منصة يلو</h3>
+                    <p>ملفات تأسيس + تجميعات مقسمة بالدروس + اختبارات إلكترونية. الأحياء فيها ممتازة. شروحات مجانية باليوتيوب.</p>
+                    <span class="src-tag">شامل</span>
+                </div>
+                <div class="src-card fade-in">
+                    <h3>📘 كتاب المعاصر</h3>
+                    <p>شرح عماد ممتاز لمادة الرياضيات. يأتي مع باركود لشرح فيديو. خيار ممتاز لمن يفضله على ناصر.</p>
+                    <span class="src-tag">رياضيات</span>
+                </div>
+                <div class="src-card fade-in">
+                    <h3>📙 كتاب النبلاء</h3>
+                    <p>متخصص بالأحياء. تم دمج الملحق الإلكتروني داخل الكتاب. خيار جيد كمصدر إضافي.</p>
+                    <span class="src-tag">أحياء</span>
+                </div>
+                <div class="src-card fade-in">
+                    <h3>🤖 دورة أينشتاين المجانية</h3>
+                    <p>تأسيس + تدريب لكل المواد. "فكرته جداً رهيبة: جزئية تأسيس ثم كل الأسئلة عليها". مجاني بالكامل!</p>
+                    <span class="src-tag">مجاني</span>
+                </div>
+                <div class="src-card fade-in">
+                    <h3>🧠 ChatGPT للمذاكرة</h3>
+                    <p>"رهيب جداً! ارسله الملف PDF وخله يشرح لك بالتفصيل قبل الدرس — تركيزك بيزيد 10 أضعاف. بس لا تعتمد عليه بكل شيء."</p>
+                    <span class="src-tag gold">حيلة ذكية</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Compilations Section -->
+        <section id="compilations" class="src-category fade-in">
+            <h2><i class="fa-solid fa-layer-group"></i> التجميعات بالترتيب الصحيح</h2>
+            
+            <div class="info-box fade-in">
+                <strong>⚡ حقيقة عن الاختبار:</strong> "٦٠-٦٥% من الأسئلة نسخ لصق من التجميعات + ~١٠% أسئلة مسربة من أيام سابقة. الباقي أسئلة بصيغ مختلفة أو تعويض بقوانين. الأحياء ٩٩% من أسئلته منسوخة من التجميعات بالحرف!" — طالب حصل على ١٠٠ بالفترتين
+            </div>
+
+            <div class="ranking">
+                <div class="rank-item fade-in">
+                    <div class="rank-num" style="background:linear-gradient(135deg,#FFD700,#FFA500)">1</div>
+                    <div class="rank-info">
+                        <h4>تجميعات غشام <span class="src-tag gold">الأهم بلا منازع</span></h4>
+                        <p>مجاني بالكامل! ريض/فيز/كيم/أحياء. أعده 3-4 مرات! "أهم تجميع" بإجماع أصحاب الدرجات العالية</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">2</div>
+                    <div class="rank-info">
+                        <h4>الحوت (فترات + شامل)</h4>
+                        <p>فترات 21 و 22 + الحوت الشامل الكبير. ممتاز كمرحلة ثانية بعد غشام</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">3</div>
+                    <div class="rank-info">
+                        <h4>تجميعات يلو</h4>
+                        <p>شاملة لكل المواد ومقسمة بالدروس. ممتازة بالذات للأحياء. "حرفياً الاختبار كله من يلو"</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">4</div>
+                    <div class="rank-info">
+                        <h4>الكنز <span class="src-tag">مجاني</span></h4>
+                        <p>تجميع مجاني ممتاز كمصدر إضافي</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">5</div>
+                    <div class="rank-info">
+                        <h4>سايفر</h4>
+                        <p>تسريبات قوية — مفيد جداً قبل الاختبار بأسبوع</p>
+                    </div>
+                </div>
+                <div class="rank-item fade-in">
+                    <div class="rank-num">6</div>
+                    <div class="rank-info">
+                        <h4>بصمة فرح (فيزياء)</h4>
+                        <p>تجميعات متخصصة بالفيزياء من د. فرح إبراهيم</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color:var(--accent-secondary);margin:2rem 0 1rem;font-size:1.15rem"><i class="fa-solid fa-bolt"></i> التسريبات — قبل الاختبار بأسبوع</h3>
+            <div class="info-box fade-in">
+                ترتيب التسريبات بالأهمية: <strong>1) محمد</strong> ("محمد ثم محمد ثم محمد — طلع من الاختبار لقى أسئلته عنده!") ← <strong>2) يلو</strong> ← <strong>3) أينشتاين</strong> ← <strong>4) سايفر</strong>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Study Method Section -->
+        <section class="src-category fade-in">
+            <h2><i class="fa-solid fa-route"></i> طريقة المذاكرة المثالية</h2>
+            
+            <div class="info-box fade-in">
+                <strong>الخطوة 1 — قراءة أولية (4 دقائق):</strong> ابدأ بقراءة الأسئلة أولاً! عقلك لا إرادياً راح يحدد المواضيع المهمة. ثم اقرأ المحتوى التأسيسي. "فايدتها جداً عظيمة!"
+            </div>
+            <div class="info-box fade-in">
+                <strong>الخطوة 2 — مشاهدة الشرح:</strong> اختر المعلم المناسب لك. سجّل المعلومات المهمة في الكتاب. سرّع المقطع إذا كان بطيئاً. كن مرناً — "أي جزئية ما فهمتها مع معلم شوفها مع آخر".
+            </div>
+            <div class="info-box fade-in">
+                <strong>الخطوة 3 — حل الأسئلة فوراً:</strong> بعد الشرح أنت ختمت 85% من الدرس! "أي سؤال ما عرفت تحله لا تشوف الشرح على طول — حاول تفكر وتبذل مجهود. السؤال راح يثبت 5 أضعاف!"
+            </div>
+            <div class="info-box fade-in">
+                <strong>الخطوة 4 — المراجعة المستمرة:</strong><br>
+                • <strong>يومية:</strong> قبل الدرس الجديد اكتب كل شي تتذكره من أمس بورقة خارجية<br>
+                • <strong>دورية:</strong> كل 4-5 أيام خصص يوم كامل للمراجعة<br>
+                • <strong>قاعدة ذهبية:</strong> "بدون مراجعة = كأنك ما ذاكرت!"
+            </div>
+            <div class="info-box fade-in">
+                <strong>💡 قاعدة الخمس ثواني:</strong> "إذا شعرت بالتردد أو الكسل — عدّ إلى 5 ثم تحرّك فوراً! لي أسبوعين مستمر عليها وشفت فرق رهيب جداً جداً"
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer" style="border-top:1px solid rgba(126,200,139,0.1);margin-top:40px">
+        <div class="footer-content">
+            <p style="color:var(--text-secondary)">جميع المعلومات مستخلصة من تجارب حقيقية لطلاب حصلوا على +95 في التحصيلي.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;margin-top:15px;flex-wrap:wrap">
+                <a href="index.html" class="btn-primary" style="display:inline-flex"><i class="fa-solid fa-home"></i> الرئيسية</a>
+                <a href="experiences.html" class="btn-secondary" style="display:inline-flex"><i class="fa-solid fa-trophy"></i> التجارب</a>
+                <a href="faq.html" class="btn-secondary" style="display:inline-flex"><i class="fa-solid fa-circle-question"></i> الأسئلة الشائعة</a>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>جميع الحقوق محفوظة &copy; 2026 | مسارك للـ +95</p></div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+    document.addEventListener("DOMContentLoaded",()=>{
+        const canvas=document.getElementById('particles-canvas');
+        if(canvas){const ctx=canvas.getContext('2d');let ps=[];function rs(){canvas.width=innerWidth;canvas.height=innerHeight}rs();addEventListener('resize',rs);class P{constructor(){this.r()}r(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.s=Math.random()*2+.5;this.sx=(Math.random()-.5)*.3;this.sy=(Math.random()-.5)*.3;this.o=Math.random()*.3+.1}u(){this.x+=this.sx;this.y+=this.sy;if(this.x<0||this.x>canvas.width)this.sx*=-1;if(this.y<0||this.y>canvas.height)this.sy*=-1}d(){ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fillStyle=`rgba(126,200,139,${this.o})`;ctx.fill()}}for(let i=0;i<35;i++)ps.push(new P);(function a(){ctx.clearRect(0,0,canvas.width,canvas.height);ps.forEach(p=>{p.u();p.d()});requestAnimationFrame(a)})()}
+        const h=document.getElementById('hamburger'),n=document.getElementById('nav-links'),o=document.getElementById('mobile-overlay');
+        function cm(){h.classList.remove('active');n.classList.remove('open');o.classList.remove('active');document.body.style.overflow=''}
+        if(h)h.addEventListener('click',()=>{if(n.classList.contains('open'))cm();else{h.classList.add('active');n.classList.add('open');o.classList.add('active');document.body.style.overflow='hidden'}});
+        if(o)o.addEventListener('click',cm);n.querySelectorAll('a').forEach(l=>l.addEventListener('click',cm));
+        const nb=document.getElementById('navbar');addEventListener('scroll',()=>{nb.classList.toggle('scrolled',scrollY>80)});
+        const b=document.getElementById('back-to-top');addEventListener('scroll',()=>{b.classList.toggle('visible',scrollY>500)});if(b)b.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+        const obs=new IntersectionObserver((e,ob)=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('appear');ob.unobserve(en.target)}})},{threshold:.1});
+        document.querySelectorAll('.fade-in').forEach(f=>obs.observe(f));
+    });
+    </script>
+</body>
+</html>
