@@ -394,45 +394,45 @@ document.addEventListener("DOMContentLoaded", () => {
     // ─── Exam Countdown Timer ───
     const countdownEl = document.getElementById('exam-countdown');
     if (countdownEl) {
-        // Tahsili exam dates — update yearly
-        const examDates = [
-            new Date('2026-06-10T08:00:00+03:00'), // Period 1
-            new Date('2026-06-20T08:00:00+03:00'), // Period 2
+        const periods = [
+            { date: new Date('2026-05-13T08:00:00+03:00'), label: 'الفترة الأولى', hijri: '١٤٤٧/١١/٢٦', miladi: '2026/05/13', day: 'الأربعاء' },
+            { date: new Date('2026-06-05T08:00:00+03:00'), label: 'الفترة الثانية', hijri: '١٤٤٧/١٢/١٩', miladi: '2026/06/05', day: 'الجمعة' },
         ];
         
         function updateCountdown() {
             const now = new Date();
-            let targetDate = null;
-            let periodLabel = '';
+            let html = '';
+            let anyUpcoming = false;
             
-            for (let i = 0; i < examDates.length; i++) {
-                if (examDates[i] > now) {
-                    targetDate = examDates[i];
-                    periodLabel = i === 0 ? 'الفترة الأولى' : 'الفترة الثانية';
-                    break;
+            periods.forEach(p => {
+                const diff = p.date - now;
+                if (diff > 0) {
+                    anyUpcoming = true;
+                    const days = Math.floor(diff / 86400000);
+                    const hours = Math.floor((diff % 86400000) / 3600000);
+                    const mins = Math.floor((diff % 3600000) / 60000);
+                    
+                    html += `
+                        <div style="margin-bottom:12px">
+                            <span class="countdown-label"><i class="fa-solid fa-clock"></i> ${p.label} — ${p.day} ${p.hijri}هـ (${p.miladi}م)</span>
+                            <div class="countdown-boxes">
+                                <div class="cd-box"><span class="cd-num">${days}</span><span class="cd-unit">يوم</span></div>
+                                <div class="cd-sep">:</div>
+                                <div class="cd-box"><span class="cd-num">${hours}</span><span class="cd-unit">ساعة</span></div>
+                                <div class="cd-sep">:</div>
+                                <div class="cd-box"><span class="cd-num">${mins}</span><span class="cd-unit">دقيقة</span></div>
+                            </div>
+                        </div>
+                    `;
                 }
-            }
+            });
             
-            if (!targetDate) {
+            if (!anyUpcoming) {
                 countdownEl.innerHTML = '<span class="countdown-label">انتهت فترات الاختبار لهذا العام 🎉</span>';
                 return;
             }
             
-            const diff = targetDate - now;
-            const days = Math.floor(diff / 86400000);
-            const hours = Math.floor((diff % 86400000) / 3600000);
-            const mins = Math.floor((diff % 3600000) / 60000);
-            
-            countdownEl.innerHTML = `
-                <span class="countdown-label"><i class="fa-solid fa-clock"></i> ${periodLabel}</span>
-                <div class="countdown-boxes">
-                    <div class="cd-box"><span class="cd-num">${days}</span><span class="cd-unit">يوم</span></div>
-                    <div class="cd-sep">:</div>
-                    <div class="cd-box"><span class="cd-num">${hours}</span><span class="cd-unit">ساعة</span></div>
-                    <div class="cd-sep">:</div>
-                    <div class="cd-box"><span class="cd-num">${mins}</span><span class="cd-unit">دقيقة</span></div>
-                </div>
-            `;
+            countdownEl.innerHTML = html;
         }
         updateCountdown();
         setInterval(updateCountdown, 60000); // Update every minute
