@@ -50,76 +50,14 @@
     <!-- Hero Section -->
     <header id="hero" class="hero-section">
         <div class="hero-content fade-in">
-            <h2 class="hero-title">تفوق في <span class="highlight" id="typed-text">التحصيلي</span> بثقة</h2>
-            <p class="hero-subtitle">دليلك الشامل، خطط مذاكرة احترافية، وأدوات ذكية لمساعدتك في تحقيق طموحك.</p>
+            <h2 class="hero-title">النصائح <span class="highlight">الذهبية</span></h2>
+            <p class="hero-subtitle">خلاصة تجارب ناجحة لتختصر عليك الطريق</p>
             
-            <div class="free-notice glass-card">
-                <i class="fa-solid fa-heart pulse-icon"></i>
-                <p>بشرى سارة: الموقع <strong>مجاني بالكامل</strong> دعماً للطلاب والطالبات.<br>
-                كل ما أطلبه منكم هو دعوة صادقة في ظهر الغيب لأخوكم <strong>عبدالله الحربي</strong>.</p>
-            </div>
+            
 
-            <div class="hero-buttons">
-                <button onclick="openSectionsModal()" class="btn-primary"><i class="fa-solid fa-layer-group"></i> جميع أقسام الموقع</button>
-                <a href="tips.html" class="btn-secondary">استكشف النصائح <i class="fa-solid fa-arrow-down"></i></a>
-            </div>
-            
-            <!-- Sections Modal -->
-            <div id="sections-modal" class="modal-overlay hidden">
-                <div class="modal-content glass-card">
-                    <button class="close-modal" aria-label="أغلق" onclick="closeSectionsModal()"><i class="fa-solid fa-xmark"></i></button>
-                    <h3 class="modal-title">اضغط للانتقال لها 🚀</h3>
-                    <div class="sections-grid">
-                        <a href="study_plan.html" class="sec-card">
-                            <i class="fa-solid fa-map-location-dot"></i>
-                            <span>خطة الـ 40 يوم</span>
-                        </a>
-                        <a href="schedule.html" class="sec-card" onclick="closeSectionsModal()">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                            <span>صانع الجداول</span>
-                        </a>
-                        <a href="experiences.html" class="sec-card">
-                            <i class="fa-solid fa-star"></i>
-                            <span>تجارب المتفوقين</span>
-                        </a>
-                        <a href="library.html" class="sec-card" onclick="closeSectionsModal()">
-                            <i class="fa-solid fa-book"></i>
-                            <span>مكتبة المصادر</span>
-                        </a>
-                        <a href="tips.html" class="sec-card" onclick="closeSectionsModal()">
-                            <i class="fa-solid fa-lightbulb"></i>
-                            <span>نصائح ذهبية</span>
-                        </a>
-                        <a href="library.html#channels" class="sec-card" onclick="closeSectionsModal()">
-                            <i class="fa-brands fa-telegram"></i>
-                            <span>القنوات المهمة</span>
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
-
-    <!-- Stats Section -->
-    <section class="stats-section fade-in">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <i class="fa-solid fa-users stat-icon green"></i>
-                <span class="stat-number" data-target="1200">0</span>
-                <span class="stat-label">طالب وطالبة استفادوا</span>
-            </div>
-            <div class="stat-card">
-                <i class="fa-solid fa-trophy stat-icon gold"></i>
-                <span class="stat-number" data-target="119">0</span>
-                <span class="stat-label">تجربة ناجحة مجمّعة</span>
-            </div>
-            <div class="stat-card">
-                <i class="fa-solid fa-book stat-icon blue"></i>
-                <span class="stat-number" data-target="7">0</span>
-                <span class="stat-label">أدلة ومصادر شاملة</span>
-            </div>
-        </div>
-    </section>
 
     <!-- Exam Countdown -->
     <section class="countdown-section fade-in">
@@ -131,6 +69,38 @@
         <div class="quote-container">
             <i class="fa-solid fa-quote-right quote-icon"></i>
             <p id="daily-quote" class="daily-quote-text">جاري التحميل...</p>
+        </div>
+    </section>
+
+    <!-- Tips & Plan Section -->
+    <section id="tips" class="tips-section">
+        <h2 class="section-title fade-in">النصائح الذهبية للـ 40 يوم</h2>
+        <p class="section-subtitle fade-in">نصائح مجرّبة من أصحاب +95 لمساعدتك في رسم مسار النجاح</p>
+        <div class="tips-grid">
+            <div class="tip-card glass-card fade-in">
+                <span class="tip-number">01</span>
+                <div class="icon-box"><i class="fa-solid fa-list-check"></i></div>
+                <h3>الأولويات أولاً</h3>
+                <p>ركّز على مادة وحدة حتى تتقنها ثم انتقل. لا تذاكر كل شيء مع بعض — واحد واحد!</p>
+            </div>
+            <div class="tip-card glass-card fade-in">
+                <span class="tip-number">02</span>
+                <div class="icon-box"><i class="fa-solid fa-book-open-reader"></i></div>
+                <h3>المصدر ليس المشكلة</h3>
+                <p>كل المصادر مميزة (يلو، عبدالكريم، غشام، إلخ). اختر الذي يناسبك، المهم هو الفهم والتطبيق.</p>
+            </div>
+            <div class="tip-card glass-card fade-in">
+                <span class="tip-number">03</span>
+                <div class="icon-box"><i class="fa-solid fa-rotate-right"></i></div>
+                <h3>المراجعة هي المفتاح</h3>
+                <p>تحصيلي بدون مراجعة = لم تستفد شيئاً! راجع يومياً وطبّق على التجميعات باستمرار.</p>
+            </div>
+            <div class="tip-card glass-card fade-in">
+                <span class="tip-number">04</span>
+                <div class="icon-box"><i class="fa-solid fa-book"></i></div>
+                <h3>الدفتر الخارجي</h3>
+                <p>سجّل القوانين المكتشفة في دفتر صغير لكل مادة (ما عدا الأحياء) ليسهل عليك تذكرها لاحقاً.</p>
+            </div>
         </div>
     </section>
 

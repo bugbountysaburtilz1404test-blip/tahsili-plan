@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسارك للـ +95 | منصة التحصيلي الشاملة</title>
+    <meta name="description" content="دليلك الشامل للتحصيلي: خطط مذاكرة ذكية، نصائح ذهبية من أصحاب الخبرة، تجارب المتفوقين. مجاني بالكامل!">
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=17">
+</head>
+<body>
+    <!-- Particles Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Organic Blobs -->
+    <div class="organic-blob blob-1"></div>
+    <div class="organic-blob blob-2"></div>
+    <div class="organic-blob blob-3"></div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> مسارك للـ +95</h1>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="tips.html">النصائح</a></li>
+                <li><a href="#experiences-preview">التجارب</a></li>
+                <li><a href="schedule.html">صانع الجداول</a></li>
+                <li><a href="library.html">المكتبة</a></li>
+                <li><a href="library.html#channels">القنوات</a></li>
+                <li><a href="#contact" class="btn-primary-small">تواصل معنا</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero-section">
+        <div class="hero-content fade-in">
+            <h2 class="hero-title">صانع الجداول <span class="highlight">الذكي</span></h2>
+            <p class="hero-subtitle">ارسم مسار نجاحك مفصلاً بالذكاء الاصطناعي</p>
+            
+            
+
+            </div>
+        </div>
+    </header>
+
+    <!-- AI Schedule Generator Section -->
+    <section id="ai-schedule" class="ai-section">
+        <div class="ai-container glass-card fade-in">
+            <div class="ai-header">
+                <i class="fa-solid fa-robot ai-icon"></i>
+                <h2 class="section-title" style="margin-bottom: 5px;">صانع الجداول بالذكاء الاصطناعي</h2>
+                <p style="color:var(--text-secondary)">دعنا نخطط لك جدولك بذكاء ليناسب مستواك والفترة المتبقية.</p>
+            </div>
+
+            <form id="aiForm" class="ai-form">
+                <div class="form-group">
+                    <label for="studentName">اسمك الأول:</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="studentName" placeholder="أدخل اسمك" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="studentLevel">مستواك الحالي تقريباً:</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <select id="studentLevel" required>
+                            <option value="">-- اختر مستواك --</option>
+                            <option value="beginner">مبتدئ (أقل من 70)</option>
+                            <option value="intermediate">متوسط (70 - 85)</option>
+                            <option value="advanced">متقدم (أعلى من 85)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="studyDays">الأيام المتاحة للمذاكرة:</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <select id="studyDays" required>
+                            <option value="">-- اختر المدة المتبقية --</option>
+                            <option value="30">30 يوماً</option>
+                            <option value="40" selected>40 يوماً (الخطة الموصى بها)</option>
+                            <option value="60">60 يوماً وأكثر</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary w-100">
+                    <i class="fa-solid fa-bolt"></i> توليد الجدول السحري 
+                </button>
+                <div class="progress-bar-container hidden" id="ai-progress">
+                    <div class="progress-bar-fill" id="ai-progress-fill"></div>
+                </div>
+            </form>
+
+            <div id="loading" class="loading-state hidden">
+                <div class="spinner"></div>
+                <p>يقوم الذكاء الاصطناعي برسم مسارك نحو التفوق...</p>
+            </div>
+
+            <div id="aiResult" class="ai-result hidden">
+                <!-- Result injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Tracker -->
+    <section class="progress-section">
+        <div class="ai-container glass-card fade-in" style="max-width: 700px;">
+            <div class="ai-header">
+                <i class="fa-solid fa-chart-line ai-icon"></i>
+                <h2 class="section-title" style="margin-bottom: 5px;">تتبّع تقدمك</h2>
+                <p style="color:var(--text-secondary)">حدّث نسبة إتمامك لكل مادة — بياناتك محفوظة في جهازك</p>
+            </div>
+            <div id="progress-tracker"></div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact -->
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <h2 class="footer-logo"><i class="fa-solid fa-graduation-cap"></i> مسارك للـ +95</h2>
+            <p style="color:var(--text-secondary)">صُنع بكل حب لخدمة الطلاب والطالبات مجاناً.</p>
+            <div class="footer-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="tips.html">النصائح</a>
+                <a href="experiences.html">التجارب</a>
+                <a href="sources.html">المصادر</a>
+                <a href="faq.html">الأسئلة الشائعة</a>
+                <a href="library.html#channels">القنوات</a>
+            </div>
+            <div class="contact-box glass-card fade-in">
+                <h3>هل لديك استفسار أو اقتراح؟</h3>
+                <p style="color:var(--text-secondary)">لا تتردد في التواصل معي ومشاركتي أفكارك لنجعل هذه المنصة أفضل.</p>
+                <a href="https://t.me/aaoove" target="_blank" class="btn-telegram">
+                    <i class="fa-brands fa-telegram"></i> تواصل مع عبدالله الحربي
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 | أُعدت كصدقة جارية، لا تنسونا من دعائكم.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js?v=18"></script>
+</body>
+</html>
