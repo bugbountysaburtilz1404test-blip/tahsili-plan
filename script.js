@@ -80,4 +80,106 @@ document.addEventListener("DOMContentLoaded", () => {
             
         }, 2000); // 2 second mock delay
     });
+
+    // Quiz System Logic
+    const startQuizBtn = document.getElementById('start-quiz-btn');
+    const quizArena = document.getElementById('quiz-arena');
+    const questionImg = document.getElementById('question-img');
+    const optionsBtns = document.querySelectorAll('.btn-option');
+    const answerFeedback = document.getElementById('answer-feedback');
+    const nextQBtn = document.getElementById('next-q-btn');
+    const qCounterEl = document.getElementById('q-counter');
+    const qTotalEl = document.getElementById('q-total');
+    const qScoreEl = document.getElementById('q-score');
+
+    let quizData = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let answered = false;
+
+    // Fetch quiz data
+    fetch('quiz_data/questions.json')
+        .then(res => res.json())
+        .then(data => {
+            // Shuffle questions
+            quizData = data.sort(() => Math.random() - 0.5);
+            qTotalEl.textContent = quizData.length;
+        })
+        .catch(err => console.error('Error loading quiz data:', err));
+
+    if (startQuizBtn) {
+        startQuizBtn.addEventListener('click', () => {
+            if(quizData.length === 0) {
+                alert('جارٍ تحميل الأسئلة... حاول مجدداً بعد قليل.');
+                return;
+            }
+            startQuizBtn.classList.add('hidden');
+            quizArena.classList.remove('hidden');
+            loadQuestion();
+        });
+    }
+
+    function loadQuestion() {
+        answered = false;
+        answerFeedback.classList.add('hidden');
+        nextQBtn.classList.add('hidden');
+        
+        // Reset buttons
+        optionsBtns.forEach(btn => {
+            btn.classList.remove('correct-ans', 'wrong-ans');
+            btn.disabled = false;
+        });
+
+        const q = quizData[currentQuestionIndex];
+        questionImg.src = q.image;
+        qCounterEl.textContent = currentQuestionIndex + 1;
+    }
+
+    optionsBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if(answered) return;
+            answered = true;
+            
+            // Clean up invisible formatting character that might be in JSON from python
+            const rawAns = quizData[currentQuestionIndex].answer;
+            const currentAns = typeof rawAns === 'string' ? rawAns.replace(/[\u200B-\u200D\uFEFF]/g, '').trim() : rawAns;
+            const selectedAnswer = e.target.getAttribute('data-answer');
+            
+            // Highlight correct and wrong
+            optionsBtns.forEach(b => {
+                b.disabled = true;
+                const optAns = b.getAttribute('data-answer');
+                if(optAns === currentAns) {
+                    b.classList.add('correct-ans');
+                } else if (optAns === selectedAnswer) {
+                    b.classList.add('wrong-ans');
+                }
+            });
+
+            answerFeedback.classList.remove('hidden');
+            if(selectedAnswer === currentAns) {
+                score++;
+                qScoreEl.textContent = score;
+                answerFeedback.innerHTML = '<i class="fa-solid fa-check-circle" style="color:#22c55e;"></i> إجابة صحيحة، بطل!';
+                answerFeedback.style.color = '#22c55e';
+            } else {
+                answerFeedback.innerHTML = `<i class="fa-solid fa-times-circle" style="color:#ef4444;"></i> إجابة خاطئة! الصحيح هو: ${currentAns}`;
+                answerFeedback.style.color = '#ef4444';
+            }
+
+            if(currentQuestionIndex < quizData.length - 1) {
+                nextQBtn.classList.remove('hidden');
+            } else {
+                answerFeedback.innerHTML += '<br><br>🎉 انتهت الأسئلة المتاحة! نتيجتك النهائية: ' + score + ' من ' + quizData.length;
+            }
+        });
+    });
+
+    if (nextQBtn) {
+        nextQBtn.addEventListener('click', () => {
+            currentQuestionIndex++;
+            loadQuestion();
+        });
+    }
+
 });
