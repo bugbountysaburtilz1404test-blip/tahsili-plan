@@ -12,7 +12,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=18">
 </head>
 <body>
     <!-- Particles Background -->
@@ -59,9 +59,27 @@
                 كل ما أطلبه منكم هو دعوة صادقة في ظهر الغيب لأخوكم <strong>عبدالله الحربي</strong>.</p>
             </div>
 
-            <div class="hero-buttons">
-                <a href="#ai-schedule" class="btn-primary"><i class="fa-solid fa-wand-magic-sparkles"></i> جرب صانع الجداول الذكي</a>
-                <a href="#tips" class="btn-secondary">استكشف النصائح <i class="fa-solid fa-arrow-down"></i></a>
+            <div class="quick-start-grid fade-in delay-1">
+                <a href="study_plan.html" class="qs-card glass-card">
+                    <div class="qs-icon-wrapper"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3>خطة الـ 40 يوم</h3>
+                    <p>أقوى خطة للبدء فوراً</p>
+                </a>
+                <a href="#ai-schedule" class="qs-card glass-card" onclick="document.getElementById('ai-schedule').scrollIntoView({behavior: 'smooth'})">
+                    <div class="qs-icon-wrapper"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>صانع الجداول</h3>
+                    <p>جدول ذكي مفصل لك</p>
+                </a>
+                <a href="experiences.html" class="qs-card glass-card">
+                    <div class="qs-icon-wrapper"><i class="fa-solid fa-star"></i></div>
+                    <h3>تجارب +95</h3>
+                    <p>أسرار المتفوقين وقصصهم</p>
+                </a>
+                <a href="#content-hub" class="qs-card glass-card" onclick="document.getElementById('content-hub').scrollIntoView({behavior: 'smooth'})">
+                    <div class="qs-icon-wrapper"><i class="fa-solid fa-book"></i></div>
+                    <h3>المكتبة الشاملة</h3>
+                    <p>أهم المصادر والتجميعات</p>
+                </a>
             </div>
         </div>
     </header>
