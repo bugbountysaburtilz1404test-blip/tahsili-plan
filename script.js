@@ -3,6 +3,27 @@
 // ══════════════════════════════════════════════════════════════
 
 document.addEventListener("DOMContentLoaded", () => {
+    
+    // ─── Sections Navigation Modal ───
+    const sectionsModal = document.getElementById('sections-modal');
+    window.openSectionsModal = () => {
+        if(sectionsModal) {
+            sectionsModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+    window.closeSectionsModal = (scroll = false) => {
+        if(sectionsModal) {
+            sectionsModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    };
+    // Close modal if clicked outside
+    if(sectionsModal) {
+        sectionsModal.addEventListener('click', (e) => {
+            if(e.target === sectionsModal) window.closeSectionsModal();
+        });
+    }
 
     // ─── Lightweight Particles (GPU-optimized) ───
     const canvas = document.getElementById('particles-canvas');
