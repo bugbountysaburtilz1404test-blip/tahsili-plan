@@ -1,394 +1,173 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خطة التحصيلي - 40 يوم</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0a0e1a;--card:#111827;--card2:#1a2235;--accent:#6366f1;--accent2:#818cf8;--green:#10b981;--green2:#34d399;--orange:#f59e0b;--red:#ef4444;--pink:#ec4899;--cyan:#06b6d4;--text:#e2e8f0;--text2:#94a3b8;--border:#1e293b;--math:#10b981;--phys:#3b82f6;--chem:#a855f7;--bio:#f59e0b;--review:#ec4899}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-.hero{text-align:center;padding:50px 20px 30px;background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#0f172a 100%);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(99,102,241,.08) 0%,transparent 50%),radial-gradient(circle at 70% 50%,rgba(16,185,129,.06) 0%,transparent 50%);animation:pulse 8s ease-in-out infinite alternate}
-@keyframes pulse{0%{transform:scale(1)}100%{transform:scale(1.1)}}
-.hero h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;background:linear-gradient(135deg,var(--accent2),var(--green2),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;position:relative;margin-bottom:8px}
-.hero p{color:var(--text2);font-size:1.1rem;position:relative}
-.progress-bar{max-width:600px;margin:20px auto;background:var(--border);border-radius:99px;height:14px;overflow:hidden;position:relative}
-.progress-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--green));transition:width .6s ease;width:0}
-.progress-text{text-align:center;margin-top:6px;color:var(--accent2);font-weight:700;font-size:1.1rem;position:relative}
-.controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:16px 20px;position:relative}
-.btn{padding:10px 22px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:600;transition:all .25s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(99,102,241,.2)}
-.btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
-.btn-reset{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.3);color:var(--red)}
-.btn-reset:hover{background:rgba(239,68,68,.25)}
-.mode-toggle{display:flex;gap:0;justify-content:center;margin:0 auto 20px;max-width:320px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--card)}
-.mode-btn{flex:1;padding:10px;text-align:center;cursor:pointer;font-family:inherit;font-weight:700;font-size:.95rem;border:none;background:transparent;color:var(--text2);transition:all .25s}
-.mode-btn.active{background:var(--accent);color:#fff}
-.container{max-width:1000px;margin:0 auto;padding:0 16px 40px}
-.phase-header{display:flex;align-items:center;gap:14px;padding:18px 22px;margin:24px 0 12px;border-radius:16px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
-.phase-header::before{content:'';position:absolute;inset:0;opacity:.12;border-radius:16px}
-.phase-header.math{border:1px solid rgba(16,185,129,.3)}.phase-header.math::before{background:var(--math)}
-.phase-header.phys{border:1px solid rgba(59,130,246,.3)}.phase-header.phys::before{background:var(--phys)}
-.phase-header.chem{border:1px solid rgba(168,85,247,.3)}.phase-header.chem::before{background:var(--chem)}
-.phase-header.bio{border:1px solid rgba(245,158,11,.3)}.phase-header.bio::before{background:var(--bio)}
-.phase-header:hover{transform:translateX(-4px)}
-.phase-icon{font-size:2rem;position:relative}
-.phase-info{flex:1;position:relative}
-.phase-info h2{font-size:1.3rem;font-weight:800}
-.phase-info span{color:var(--text2);font-size:.9rem}
-.phase-arrow{font-size:1.5rem;transition:transform .3s;position:relative}
-.phase-header.open .phase-arrow{transform:rotate(90deg)}
-.phase-body{display:none;padding:0 6px}
-.phase-body.show{display:block;animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-.day-card{background:var(--card);border:1px solid var(--border);border-radius:14px;margin:10px 0;padding:18px;transition:all .3s;position:relative;overflow:hidden}
-.day-card:hover{border-color:var(--accent);box-shadow:0 0 20px rgba(99,102,241,.08)}
-.day-card.completed{opacity:.6;border-color:var(--green)}
-.day-card.completed::after{content:'✅';position:absolute;top:14px;left:14px;font-size:1.4rem}
-.day-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.day-num{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.1rem;color:#fff;flex-shrink:0}
-.day-num.math{background:linear-gradient(135deg,#059669,#10b981)}
-.day-num.phys{background:linear-gradient(135deg,#2563eb,#3b82f6)}
-.day-num.chem{background:linear-gradient(135deg,#7c3aed,#a855f7)}
-.day-num.bio{background:linear-gradient(135deg,#d97706,#f59e0b)}
-.day-num.review{background:linear-gradient(135deg,#db2777,#ec4899)}
-.day-title{font-weight:700;font-size:1.05rem}
-.day-tasks{display:flex;flex-direction:column;gap:8px}
-.task-row{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--card2);border-radius:10px;transition:all .2s}
-.task-row:hover{background:rgba(99,102,241,.08)}
-.task-icon{font-size:1.1rem;margin-top:2px;flex-shrink:0}
-.task-content{flex:1}
-.task-label{font-weight:600;font-size:.85rem;color:var(--accent2);margin-bottom:2px}
-.task-desc{font-size:.95rem}
-.time-badge{font-size:.8rem;color:var(--text2);background:rgba(148,163,184,.1);padding:3px 10px;border-radius:8px;white-space:nowrap;flex-shrink:0;align-self:center}
-.hide-time .time-badge{display:none}
-.check-btn{width:36px;height:36px;border-radius:10px;border:2px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s;flex-shrink:0;align-self:center;margin-left:4px}
-.check-btn:hover{border-color:var(--green);background:rgba(16,185,129,.1)}
-.check-btn.done{background:var(--green);border-color:var(--green);color:#fff}
-.tips-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin:30px 0}
-.tips-section h2{font-size:1.3rem;font-weight:800;margin-bottom:16px;color:var(--orange)}
-.tip{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
-.tip:last-child{border:none}
-.tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
-.tip-text{font-size:.95rem;line-height:1.7}
-.tip-text strong{color:var(--accent2)}
-.resources{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin:20px 0}
-.resources h2{font-size:1.3rem;font-weight:800;margin-bottom:16px;color:var(--cyan)}
-.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.res-card{background:var(--card2);border-radius:12px;padding:14px;text-align:center;border:1px solid var(--border);transition:all .25s}
-.res-card:hover{transform:translateY(-3px);border-color:var(--accent)}
-.res-card .res-icon{font-size:2rem;margin-bottom:6px}
-.res-card h3{font-size:.95rem;margin-bottom:4px}
-.res-card p{font-size:.8rem;color:var(--text2)}
-.channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:14px}
-.ch{background:var(--card2);border-radius:10px;padding:12px;text-align:center;border:1px solid var(--border)}
-.ch a{color:var(--cyan);text-decoration:none;font-weight:600;font-size:.9rem}
-.ch span{display:block;font-size:.8rem;color:var(--text2);margin-top:4px}
-.footer{text-align:center;padding:30px;color:var(--text2);font-size:.85rem}
-@media(max-width:600px){.day-top{flex-wrap:wrap}.task-row{flex-wrap:wrap}.controls{gap:6px}.btn{padding:8px 14px;font-size:.85rem}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التحصيلي والقدرات الشاملة</title>
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="hero">
-<h1>📚 خطة التحصيلي العلمي</h1>
-<p>40 يوم • 4 مراحل • خطة شاملة ومتكاملة</p>
-<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-<div class="progress-text" id="progressText">0 / 40 يوم مكتمل</div>
-</div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> مسارك للـ +95</h1>
+            <ul class="nav-links">
+                <li><a href="#hero">الرئيسية</a></li>
+                <li><a href="#tips">النصائح الذهبية</a></li>
+                <li><a href="#ai-schedule">صانع الجداول</a></li>
+                <li><a href="#channels">قنوات تهمك</a></li>
+                <li><a href="#contact" class="btn-primary-small">تواصل معنا</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<div class="controls">
-<div class="mode-toggle">
-<button class="mode-btn active" onclick="setMode('flex')">🎯 مرن</button>
-<button class="mode-btn" onclick="setMode('timed')">⏰ بالوقت</button>
-</div>
-</div>
-<div class="controls">
-<button class="btn" onclick="filterPhase('all')">الكل</button>
-<button class="btn" onclick="filterPhase('math')">🟢 رياضيات</button>
-<button class="btn" onclick="filterPhase('phys')">🔵 فيزياء</button>
-<button class="btn" onclick="filterPhase('chem')">🟣 كيمياء</button>
-<button class="btn" onclick="filterPhase('bio')">🟠 أحياء</button>
-<button class="btn btn-reset" onclick="resetAll()">🔄 إعادة تعيين</button>
-</div>
+    <!-- Hero Section -->
+    <header id="hero" class="hero-section">
+        <div class="hero-content fade-in">
+            <h2 class="hero-title">تفوق في <span class="highlight">التحصيلي والقدرات</span> بثقة</h2>
+            <p class="hero-subtitle">دليلك الشامل، خطط مذاكرة احترافية، وأدوات ذكية لمساعدتك في تحقيق طموحك.</p>
+            
+            <div class="free-notice glass-card">
+                <i class="fa-solid fa-heart pulse-icon"></i>
+                <p>بشرى سارة: الموقع <strong>مجاني بالكامل</strong> دعماً للطلاب والطالبات.<br>
+                كل ما أطلبه منكم هو دعوة صادقة في ظهر الغيب لأخيكم <strong>عبدالله الحربي</strong>.</p>
+            </div>
 
-<div class="container" id="app">
-<!-- Tips -->
-<div class="tips-section">
-<h2>💡 النصائح الذهبية</h2>
-<div class="tip"><span class="tip-icon">⚡</span><div class="tip-text"><strong>الأولويات أولاً:</strong> لا تبدأ التحصيلي إلا بعد ما تقفل القدرات (+95)</div></div>
-<div class="tip"><span class="tip-icon">📖</span><div class="tip-text"><strong>المصدر مو المشكلة:</strong> كل المصادر مميزة، اختر اللي يناسبك</div></div>
-<div class="tip"><span class="tip-icon">🔁</span><div class="tip-text"><strong>المراجعة هي المفتاح:</strong> راجع يومياً 2-3 دروس نظرياً + تجميعات</div></div>
-<div class="tip"><span class="tip-icon">📝</span><div class="tip-text"><strong>الدفتر الخارجي:</strong> سجّل القوانين في دفتر لكل مادة (ما عدا الأحياء)</div></div>
-<div class="tip"><span class="tip-icon">❌</span><div class="tip-text"><strong>تجنّب:</strong> عدم المراجعة • التسويف • التشتت بين مصادر كثيرة • بدون خطة</div></div>
-</div>
+            <div class="hero-buttons">
+                <a href="#ai-schedule" class="btn-primary"><i class="fa-solid fa-wand-magic-sparkles"></i> جرب صانع الجداول الذكي</a>
+                <a href="#tips" class="btn-secondary">استكشف النصائح <i class="fa-solid fa-arrow-down"></i></a>
+            </div>
+        </div>
+    </header>
 
-<!-- Resources -->
-<div class="resources">
-<h2>📦 الموارد المتوفرة</h2>
-<div class="res-grid">
-<div class="res-card"><div class="res-icon">📕</div><h3>كتاب ناصر</h3><p>تأسيس + تجميعات مدمجة</p></div>
-<div class="res-card"><div class="res-icon">🧪</div><h3>اختبارات دار الحرف</h3><p>9,965 سؤال</p></div>
-<div class="res-card"><div class="res-icon">🎬</div><h3>شروحات فيديو</h3><p>6,261 درس / 171 ساعة</p></div>
-<div class="res-card"><div class="res-icon">🆓</div><h3>دورة شاملة مجانية</h3><p>377 درس / 41 ساعة</p></div>
-</div>
-<h2 style="margin-top:20px;font-size:1.1rem;color:var(--cyan)">📱 قنوات تيليجرام</h2>
-<div class="channels">
-<div class="ch"><a href="https://t.me/moh_5519" target="_blank">محمد لتحصيلي</a><span>t.me/moh_5519</span></div>
-<div class="ch"><a href="https://t.me/yellowqt1" target="_blank">يلو</a><span>t.me/yellowqt1</span></div>
-<div class="ch"><a href="https://t.me/Ghasham222" target="_blank">غشام</a><span>t.me/Ghasham222</span></div>
-<div class="ch"><a href="https://t.me/alm7nkinlt7sili" target="_blank">أينشتاين</a><span>t.me/alm7nkinlt7sili</span></div>
-</div>
-</div>
+    <!-- Tips & Plan Section -->
+    <section id="tips" class="tips-section">
+        <h2 class="section-title">النصائح الذهبية للـ 40 يوم</h2>
+        <div class="tips-grid">
+            <div class="tip-card glass-card fade-in">
+                <div class="icon-box"><i class="fa-solid fa-list-check"></i></div>
+                <h3>الأولويات أولاً</h3>
+                <p>لا تبدأ التحصيلي إلا بعد ما تقفل القدرات (+95). لا تدع التحصيلي يشغلك عن أساس القدرات.</p>
+            </div>
+            <div class="tip-card glass-card fade-in" style="transition-delay: 0.1s;">
+                <div class="icon-box"><i class="fa-solid fa-book-open-reader"></i></div>
+                <h3>المصدر ليس المشكلة</h3>
+                <p>كل المصادر مميزة (يلو، عبدالكريم، غشام، إلخ). اختر الذي يناسبك، المهم هو الفهم والتطبيق.</p>
+            </div>
+            <div class="tip-card glass-card fade-in" style="transition-delay: 0.2s;">
+                <div class="icon-box"><i class="fa-solid fa-rotate-right"></i></div>
+                <h3>المراجعة هي المفتاح</h3>
+                <p>تحصيلي بدون مراجعة = لم تستفد شيئاً! راجع يومياً وطبّق على التجميعات باستمرار.</p>
+            </div>
+            <div class="tip-card glass-card fade-in" style="transition-delay: 0.3s;">
+                <div class="icon-box"><i class="fa-solid fa-book"></i></div>
+                <h3>الدفتر الخارجي</h3>
+                <p>سجّل القوانين المكتشفة في دفتر صغير لكل مادة (ما عدا الأحياء) ليسهل عليك تذكرها لاحقاً.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- Days will be rendered by JS -->
-<div id="phases"></div>
-</div>
+    <!-- AI Schedule Generator Section -->
+    <section id="ai-schedule" class="ai-section">
+        <div class="ai-container glass-card fade-in">
+            <div class="ai-header">
+                <i class="fa-solid fa-robot ai-icon"></i>
+                <h2 class="section-title" style="margin-bottom: 5px;">صانع الجداول بالذكاء الاصطناعي</h2>
+                <p>دعنا نخطط لك جدولك بذكاء ليناسب مستواك والفترة المتبقية.</p>
+            </div>
 
-<div class="footer">خطة التحصيلي العلمي - 40 يوم 🔥 بالتوفيق!</div>
+            <form id="aiForm" class="ai-form">
+                <div class="form-group">
+                    <label for="studentName">اسمك الأول:</label>
+                    <input type="text" id="studentName" placeholder="أدخل اسمك" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentLevel">مستواك الحالي تقريباً:</label>
+                    <select id="studentLevel" required>
+                        <option value="">-- اختر مستواك --</option>
+                        <option value="beginner">مبتدئ (أقل من 70)</option>
+                        <option value="intermediate">متوسط (70 - 85)</option>
+                        <option value="advanced">متقدم (أعلى من 85)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="studyDays">الأيام المتاحة للمذاكرة:</label>
+                    <select id="studyDays" required>
+                        <option value="">-- اختر المدة المتبقية --</option>
+                        <option value="30">30 يوماً</option>
+                        <option value="40" selected>40 يوماً (الخطة الموصى بها)</option>
+                        <option value="60">60 يوماً وأكثر</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary w-100">
+                    <i class="fa-solid fa-bolt"></i> توليد الجدول السحري 
+                </button>
+            </form>
 
-<script>
-const DATA=[
-{phase:"math",name:"المرحلة 1: الرياضيات",icon:"🟢",range:"اليوم 1 - 10",days:[
-{d:1,title:"الأعداد والعمليات عليها",tasks:[
-{icon:"📖",label:"التأسيس",desc:"دراسة الأعداد والعمليات عليها من كتاب ناصر / دار الحرف",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"حل تجميعات الدرس + تسجيل القوانين في الدفتر",time:"10:00 - 12:30"},
-{icon:"🔁",label:"المراجعة",desc:"—",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"حل تجميعات إضافية من المصدر",time:"4:30 - 6:30"}]},
-{d:2,title:"الكسور والنسب المئوية",tasks:[
-{icon:"📖",label:"التأسيس",desc:"دراسة الكسور والنسب المئوية",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"حل تجميعات الدرس + تسجيل القوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"المراجعة",desc:"مراجعة درس 1 (الأعداد والعمليات)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تطبيق على تجميعات الدرس",time:"4:30 - 6:30"}]},
-{d:3,title:"المعادلات الخطية",tasks:[
-{icon:"📖",label:"التأسيس",desc:"دراسة المعادلات الخطية وحلها",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات الدرس + القوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"المراجعة",desc:"مراجعة درس 1-2",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات إضافية",time:"4:30 - 6:30"}]},
-{d:4,title:"الدوال وأنواعها",tasks:[
-{icon:"📖",label:"التأسيس",desc:"الدوال الخطية والتربيعية واللوغاريتمية والأسية",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"المراجعة",desc:"مراجعة درس 2-3",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تطبيق تجميعات",time:"4:30 - 6:30"}]},
-{d:5,title:"المتتابعات والمتسلسلات",tasks:[
-{icon:"📖",label:"التأسيس",desc:"المتتابعات الحسابية والهندسية",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"المراجعة",desc:"مراجعة درس 3-4",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات إضافية",time:"4:30 - 6:30"}]},
-{d:6,title:"حساب المثلثات",tasks:[
-{icon:"📖",label:"التأسيس",desc:"النسب المثلثية وقوانين الجيب وجيب التمام",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"المراجعة",desc:"مراجعة درس 4-5",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات حساب المثلثات",time:"4:30 - 6:30"}]},
-{d:7,title:"الهندسة المستوية والفراغية",tasks:[
-{icon:"📖",label:"التأسيس",desc:"المساحات والحجوم والأشكال الهندسية",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"المراجعة",desc:"مراجعة درس 5-6",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الهندسة",time:"4:30 - 6:30"}]},
-{d:8,title:"الإحصاء والاحتمالات",tasks:[
-{icon:"📖",label:"التأسيس",desc:"المتوسط والوسيط والمنوال والاحتمالات",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"المراجعة",desc:"مراجعة درس 6-7",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الإحصاء",time:"4:30 - 6:30"}]},
-{d:9,title:"التفاضل والتكامل",tasks:[
-{icon:"📖",label:"التأسيس",desc:"النهايات والاشتقاق والتكامل",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"المراجعة",desc:"مراجعة درس 7-8",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات التفاضل والتكامل",time:"4:30 - 6:30"}]},
-{d:10,title:"🔁 مراجعة شاملة رياضيات",tasks:[
-{icon:"🔁",label:"مراجعة شاملة",desc:"مراجعة جميع دروس الرياضيات نظرياً",time:"6:00 - 9:30"},
-{icon:"✏️",label:"تجميعات عامة",desc:"حل تجميعات عامة رياضيات",time:"10:00 - 12:30"},
-{icon:"🧪",label:"اختبار دار الحرف",desc:"حل اختبار دار الحرف رياضيات + تحليل الأخطاء",time:"2:00 - 6:30"},
-{icon:"📝",label:"تصحيح",desc:"مراجعة الأخطاء وتثبيت القوانين",time:"8:00 - 10:00"}]}
-]},
-{phase:"phys",name:"المرحلة 2: الفيزياء",icon:"🔵",range:"اليوم 11 - 20",days:[
-{d:11,title:"الميكانيكا (الحركة والقوة)",tasks:[
-{icon:"📖",label:"التأسيس",desc:"المسافة والإزاحة والسرعة والتسارع",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات الدرس + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة ريض",desc:"مراجعة 2 درس رياضيات",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات إضافية",time:"4:30 - 6:30"}]},
-{d:12,title:"قوانين نيوتن",tasks:[
-{icon:"📖",label:"التأسيس",desc:"القوانين الثلاثة والاحتكاك والقوى",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة ريض",desc:"مراجعة 2 درس رياضيات",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات نيوتن",time:"4:30 - 6:30"}]},
-{d:13,title:"الشغل والطاقة",tasks:[
-{icon:"📖",label:"التأسيس",desc:"الشغل وطاقة الحركة وطاقة الوضع والقدرة",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة ريض",desc:"مراجعة 2 درس رياضيات",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الشغل والطاقة",time:"4:30 - 6:30"}]},
-{d:14,title:"كمية الحركة والتصادم",tasks:[
-{icon:"📖",label:"التأسيس",desc:"كمية الحركة الخطية والدفع والتصادمات",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة ريض",desc:"مراجعة 2 درس رياضيات",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات كمية الحركة",time:"4:30 - 6:30"}]},
-{d:15,title:"الحركة الدورانية والجاذبية",tasks:[
-{icon:"📖",label:"التأسيس",desc:"العزم والحركة الدورانية وقانون الجذب العام",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة فيز",desc:"مراجعة 2 درس فيزياء سابقة",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الحركة الدورانية",time:"4:30 - 6:30"}]},
-{d:16,title:"الموائع والضغط",tasks:[
-{icon:"📖",label:"التأسيس",desc:"ضغط الموائع وقاعدة باسكال وأرخميدس",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة فيز",desc:"مراجعة 2 درس فيزياء",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الموائع",time:"4:30 - 6:30"}]},
-{d:17,title:"الحرارة والديناميكا الحرارية",tasks:[
-{icon:"📖",label:"التأسيس",desc:"درجة الحرارة والحرارة النوعية والقوانين",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة مختلطة",desc:"مراجعة 2 درس (ريض+فيز)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الحرارة",time:"4:30 - 6:30"}]},
-{d:18,title:"الموجات والصوت والضوء",tasks:[
-{icon:"📖",label:"التأسيس",desc:"خصائص الموجات والانعكاس والانكسار",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة مختلطة",desc:"مراجعة 2 درس (ريض+فيز)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الموجات",time:"4:30 - 6:30"}]},
-{d:19,title:"الكهرباء والمغناطيسية",tasks:[
-{icon:"📖",label:"التأسيس",desc:"الدوائر الكهربائية والمجال المغناطيسي والحث",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة مختلطة",desc:"مراجعة 2 درس (ريض+فيز)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الكهرباء",time:"4:30 - 6:30"}]},
-{d:20,title:"🔁 مراجعة شاملة فيزياء",tasks:[
-{icon:"🔁",label:"مراجعة شاملة",desc:"مراجعة جميع دروس الفيزياء نظرياً",time:"6:00 - 9:30"},
-{icon:"✏️",label:"تجميعات عامة",desc:"حل تجميعات عامة فيزياء",time:"10:00 - 12:30"},
-{icon:"🧪",label:"اختبار دار الحرف",desc:"حل اختبار دار الحرف فيزياء + تحليل الأخطاء",time:"2:00 - 6:30"},
-{icon:"📝",label:"تصحيح",desc:"مراجعة الأخطاء وتثبيت القوانين",time:"8:00 - 10:00"}]}
-]},
-{phase:"chem",name:"المرحلة 3: الكيمياء",icon:"🟣",range:"اليوم 21 - 30",days:[
-{d:21,title:"بنية الذرة والجدول الدوري",tasks:[
-{icon:"📖",label:"التأسيس",desc:"النماذج الذرية والتوزيع الإلكتروني والجدول الدوري",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة سابقة",desc:"مراجعة 2 درس (ريض أو فيز)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الذرة",time:"4:30 - 6:30"}]},
-{d:22,title:"الروابط الكيميائية",tasks:[
-{icon:"📖",label:"التأسيس",desc:"الرابطة الأيونية والتساهمية والفلزية",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة سابقة",desc:"مراجعة 2 درس (ريض أو فيز)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الروابط",time:"4:30 - 6:30"}]},
-{d:23,title:"التفاعلات الكيميائية والموازنة",tasks:[
-{icon:"📖",label:"التأسيس",desc:"أنواع التفاعلات وموازنة المعادلات",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة سابقة",desc:"مراجعة 2 درس (ريض أو فيز)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات التفاعلات",time:"4:30 - 6:30"}]},
-{d:24,title:"الحسابات الكيميائية (المول)",tasks:[
-{icon:"📖",label:"التأسيس",desc:"مفهوم المول والكتلة المولية والحسابات",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة سابقة",desc:"مراجعة 2 درس (ريض أو فيز)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات المول",time:"4:30 - 6:30"}]},
-{d:25,title:"المحاليل والتركيز",tasks:[
-{icon:"📖",label:"التأسيس",desc:"أنواع المحاليل والمولارية والتخفيف",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة كيم",desc:"مراجعة 2 درس كيمياء سابقة",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات المحاليل",time:"4:30 - 6:30"}]},
-{d:26,title:"الأحماض والقواعد والأملاح",tasks:[
-{icon:"📖",label:"التأسيس",desc:"نظريات الأحماض والقواعد والرقم الهيدروجيني",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة كيم",desc:"مراجعة 2 درس كيمياء",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الأحماض والقواعد",time:"4:30 - 6:30"}]},
-{d:27,title:"الكيمياء العضوية",tasks:[
-{icon:"📖",label:"التأسيس",desc:"الهيدروكربونات والمجموعات الوظيفية",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة مختلطة",desc:"مراجعة 2 درس (ريض+فيز+كيم)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات العضوية",time:"4:30 - 6:30"}]},
-{d:28,title:"الكيمياء الكهربائية + سرعة التفاعل",tasks:[
-{icon:"📖",label:"التأسيس",desc:"الخلايا الكهروكيميائية والعوامل المؤثرة على سرعة التفاعل",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة مختلطة",desc:"مراجعة 2 درس (ريض+فيز+كيم)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الكهروكيميائية",time:"4:30 - 6:30"}]},
-{d:29,title:"الاتزان الكيميائي + الغازات",tasks:[
-{icon:"📖",label:"التأسيس",desc:"ثابت الاتزان وقوانين الغازات",time:"6:00 - 9:30"},
-{icon:"✏️",label:"التطبيق",desc:"تجميعات + قوانين",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة مختلطة",desc:"مراجعة 2 درس (ريض+فيز+كيم)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الاتزان والغازات",time:"4:30 - 6:30"}]},
-{d:30,title:"🔁 مراجعة شاملة كيمياء",tasks:[
-{icon:"🔁",label:"مراجعة شاملة",desc:"مراجعة جميع دروس الكيمياء نظرياً",time:"6:00 - 9:30"},
-{icon:"✏️",label:"تجميعات عامة",desc:"حل تجميعات عامة كيمياء",time:"10:00 - 12:30"},
-{icon:"🧪",label:"اختبار دار الحرف",desc:"حل اختبار دار الحرف كيمياء + تحليل الأخطاء",time:"2:00 - 6:30"},
-{icon:"📝",label:"تصحيح",desc:"مراجعة الأخطاء وتثبيت القوانين",time:"8:00 - 10:00"}]}
-]},
-{phase:"bio",name:"المرحلة 4: الأحياء + المراجعة النهائية",icon:"🟠",range:"اليوم 31 - 40",days:[
-{d:31,title:"الخلية وأجزاؤها + الانقسام",tasks:[
-{icon:"📖",label:"التأسيس",desc:"تركيب الخلية والعضيات والانقسام المتساوي والمنصف",time:"6:00 - 9:30"},
-{icon:"✏️",label:"حفظ + تجميعات",desc:"حفظ المصطلحات + حل تجميعات",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة سابقة",desc:"مراجعة 2 درس (ريض+فيز+كيم)",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الخلية",time:"4:30 - 6:30"}]},
-{d:32,title:"الوراثة (مندل + الأنماط)",tasks:[
-{icon:"📖",label:"التأسيس",desc:"قوانين مندل والسيادة والأنماط الوراثية",time:"6:00 - 9:30"},
-{icon:"✏️",label:"حفظ + تجميعات",desc:"حفظ + حل تجميعات",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة",desc:"مراجعة 2 درس سابقة",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات الوراثة",time:"4:30 - 6:30"}]},
-{d:33,title:"DNA + البروتينات + التقنية الحيوية",tasks:[
-{icon:"📖",label:"التأسيس",desc:"تركيب DNA والتضاعف والنسخ والترجمة",time:"6:00 - 9:30"},
-{icon:"✏️",label:"حفظ + تجميعات",desc:"حفظ + حل تجميعات",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة",desc:"مراجعة 2 درس سابقة",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات DNA",time:"4:30 - 6:30"}]},
-{d:34,title:"التصنيف + البكتيريا + الفيروسات",tasks:[
-{icon:"📖",label:"التأسيس",desc:"ممالك الكائنات الحية والبكتيريا والفيروسات",time:"6:00 - 9:30"},
-{icon:"✏️",label:"حفظ + تجميعات",desc:"حفظ + حل تجميعات",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة",desc:"مراجعة 2 درس سابقة",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات التصنيف",time:"4:30 - 6:30"}]},
-{d:35,title:"أجهزة جسم الإنسان (1)",tasks:[
-{icon:"📖",label:"التأسيس",desc:"الجهاز الهضمي والدوري والتنفسي",time:"6:00 - 9:30"},
-{icon:"✏️",label:"حفظ + تجميعات",desc:"حفظ + حل تجميعات",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة",desc:"مراجعة 2 درس سابقة",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات أجهزة الجسم",time:"4:30 - 6:30"}]},
-{d:36,title:"أجهزة جسم الإنسان (2) + البيئة",tasks:[
-{icon:"📖",label:"التأسيس",desc:"الجهاز العصبي والإخراجي وعلم البيئة",time:"6:00 - 9:30"},
-{icon:"✏️",label:"حفظ + تجميعات",desc:"حفظ + حل تجميعات",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة أحياء",desc:"مراجعة أحياء سريعة شاملة",time:"2:00 - 4:00"},
-{icon:"📋",label:"تجميعات",desc:"تجميعات البيئة",time:"4:30 - 6:30"}]},
-{d:37,title:"🔁 مراجعة شاملة أحياء",tasks:[
-{icon:"🔁",label:"مراجعة شاملة",desc:"مراجعة جميع دروس الأحياء",time:"6:00 - 9:30"},
-{icon:"✏️",label:"تجميعات عامة",desc:"حل تجميعات عامة أحياء",time:"10:00 - 12:30"},
-{icon:"🧪",label:"اختبار دار الحرف",desc:"حل اختبار دار الحرف أحياء + تحليل الأخطاء",time:"2:00 - 6:30"},
-{icon:"📝",label:"تصحيح",desc:"مراجعة الأخطاء",time:"8:00 - 10:00"}]},
-{d:38,title:"⚡ اختبار تجريبي شامل #1",tasks:[
-{icon:"🧪",label:"اختبار تجريبي",desc:"حل اختبار تجريبي شامل (كل المواد) من دار الحرف",time:"6:00 - 9:30"},
-{icon:"📊",label:"تحليل الأخطاء",desc:"تحليل كل خطأ وفهم السبب",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة الضعف",desc:"مراجعة المواضيع اللي غلطت فيها",time:"2:00 - 6:30"},
-{icon:"📝",label:"تثبيت",desc:"إعادة حل الأسئلة اللي غلطت فيها",time:"8:00 - 10:00"}]},
-{d:39,title:"⚡ اختبار تجريبي شامل #2",tasks:[
-{icon:"🧪",label:"اختبار تجريبي",desc:"حل اختبار تجريبي شامل ثاني",time:"6:00 - 9:30"},
-{icon:"📊",label:"تحليل الأخطاء",desc:"تحليل الأخطاء ومقارنة بالاختبار الأول",time:"10:00 - 12:30"},
-{icon:"🔁",label:"مراجعة الضعف",desc:"مراجعة نقاط الضعف المتبقية",time:"2:00 - 6:30"},
-{icon:"📝",label:"تثبيت",desc:"تثبيت القوانين والمفاهيم الصعبة",time:"8:00 - 10:00"}]},
-{d:40,title:"🎯 مراجعة خفيفة + استعداد للاختبار",tasks:[
-{icon:"📖",label:"مراجعة خفيفة",desc:"قراءة دفتر القوانين لكل مادة",time:"6:00 - 9:30"},
-{icon:"🔁",label:"مراجعة سريعة",desc:"مراجعة سريعة للمفاهيم الأساسية",time:"10:00 - 12:30"},
-{icon:"😴",label:"راحة نفسية",desc:"لا تذاكر بعد الظهر! استرخِ وجهّز نفسك",time:"بعد الظهر"},
-{icon:"🌙",label:"نوم مبكر",desc:"نام مبكر واستعد للاختبار - بالتوفيق! 🔥",time:"9:00 مساءً"}]}
-]}
-];
+            <div id="loading" class="loading-state hidden">
+                <div class="spinner"></div>
+                <p>يقوم الذكاء الاصطناعي برسم مسارك نحو التفوق...</p>
+            </div>
 
-let completed=JSON.parse(localStorage.getItem('tahsili40')||'{}');
-let mode='flex';
+            <div id="aiResult" class="ai-result hidden">
+                <!-- Result injected via JS -->
+            </div>
+        </div>
+    </section>
 
-function setMode(m){mode=m;document.querySelectorAll('.mode-btn').forEach((b,i)=>b.classList.toggle('active',i===(m==='flex'?0:1)));document.getElementById('phases').classList.toggle('hide-time',m==='flex')}
+    <!-- Channels Section -->
+    <section id="channels" class="channels-section">
+        <h2 class="section-title">قنوات تليجرام لا غنى عنها</h2>
+        <div class="channels-grid">
+            <a href="https://t.me/moh_5519" target="_blank" class="channel-card glass-card fade-in">
+                <i class="fa-brands fa-telegram telegram-icon"></i>
+                <h3>محمد للتحصيلي</h3>
+                <p>شروحات وإرشادات شاملة</p>
+            </a>
+            <a href="https://t.me/yellowqt1" target="_blank" class="channel-card glass-card fade-in" style="transition-delay: 0.1s;">
+                <i class="fa-brands fa-telegram telegram-icon"></i>
+                <h3>يلو</h3>
+                <p>تجميعات وشروحات يلو الشهيرة</p>
+            </a>
+            <a href="https://t.me/Ghasham222" target="_blank" class="channel-card glass-card fade-in" style="transition-delay: 0.2s;">
+                <i class="fa-brands fa-telegram telegram-icon"></i>
+                <h3>غشام</h3>
+                <p>المصدر الموثوق للتجميعات</p>
+            </a>
+            <a href="https://t.me/alm7nkinlt7sili" target="_blank" class="channel-card glass-card fade-in" style="transition-delay: 0.3s;">
+                <i class="fa-brands fa-telegram telegram-icon"></i>
+                <h3>أينشتاين</h3>
+                <p>تأسيس وتدريب مكثف</p>
+            </a>
+        </div>
+    </section>
 
-function filterPhase(p){document.querySelectorAll('.phase-section').forEach(s=>{s.style.display=(p==='all'||s.dataset.phase===p)?'block':'none'});document.querySelectorAll('.controls .btn:not(.btn-reset)').forEach(b=>b.classList.remove('active'));event.target.classList.add('active')}
+    <!-- Footer & Contact -->
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <h2 class="footer-logo"><i class="fa-solid fa-graduation-cap"></i> مسارك للـ +95</h2>
+            <p>صُنع بكل حب لخدمة الطلاب والطالبات مجاناً.</p>
+            <div class="contact-box glass-card fade-in">
+                <h3>هل لديك استفسار أو اقتراح؟</h3>
+                <p>لا تتردد في التواصل معي ومشاركتي أفكارك لنجعل هذه المنصة أفضل.</p>
+                <a href="https://t.me/aaoove" target="_blank" class="btn-telegram">
+                    <i class="fa-brands fa-telegram"></i> تواصل مع عبدالله الحربي
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 | أُعدت كصدقة جارية، لا تنسونا من دعائكم.</p>
+        </div>
+    </footer>
 
-function toggleDay(d){completed[d]=!completed[d];localStorage.setItem('tahsili40',JSON.stringify(completed));updateUI()}
-
-function togglePhase(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('show')}
-
-function resetAll(){if(confirm('متأكد تبي تعيد تعيين كل التقدم؟')){completed={};localStorage.setItem('tahsili40',JSON.stringify(completed));updateUI()}}
-
-function updateUI(){const total=40;const done=Object.values(completed).filter(Boolean).length;const pct=Math.round((done/total)*100);document.getElementById('progressFill').style.width=pct+'%';document.getElementById('progressText').textContent=`${done} / ${total} يوم مكتمل (${pct}%)`;document.querySelectorAll('.day-card').forEach(c=>{const d=parseInt(c.dataset.day);c.classList.toggle('completed',!!completed[d]);const btn=c.querySelector('.check-btn');if(btn)btn.classList.toggle('done',!!completed[d]);if(btn)btn.textContent=completed[d]?'✓':'○'})}
-
-function render(){const cont=document.getElementById('phases');let html='';
-DATA.forEach(phase=>{html+=`<div class="phase-section" data-phase="${phase.phase}">`;
-html+=`<div class="phase-header ${phase.phase} open" onclick="togglePhase(this)"><span class="phase-icon">${phase.icon}</span><div class="phase-info"><h2>${phase.name}</h2><span>${phase.range}</span></div><span class="phase-arrow">◀</span></div>`;
-html+=`<div class="phase-body show">`;
-phase.days.forEach(day=>{const dayType=[10,20,30,37].includes(day.d)?'review':phase.phase;
-html+=`<div class="day-card ${completed[day.d]?'completed':''}" data-day="${day.d}"><div class="day-top"><div class="day-num ${dayType}">${day.d}</div><div class="day-title">${day.title}</div><button class="check-btn ${completed[day.d]?'done':''}" onclick="toggleDay(${day.d})">${completed[day.d]?'✓':'○'}</button></div><div class="day-tasks">`;
-day.tasks.forEach(t=>{html+=`<div class="task-row"><span class="task-icon">${t.icon}</span><div class="task-content"><div class="task-label">${t.label}</div><div class="task-desc">${t.desc}</div></div><span class="time-badge">${t.time}</span></div>`});
-html+=`</div></div>`});
-html+=`</div></div>`});
-cont.innerHTML=html;
-cont.classList.toggle('hide-time',mode==='flex');
-updateUI()}
-
-render();
-</script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>
