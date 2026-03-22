@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تجارب المتفوقين | مسارك للـ +95</title>
+    <meta name="description" content="تجارب حقيقية من طلاب حصلوا على +95 في التحصيلي: خطط مذاكرتهم، مصادرهم، نصائحهم الذهبية. استفد من تجاربهم المثبتة!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=11">
+    <style>
+        .exp-hero { padding: 140px 20px 60px; text-align: center; }
+        .exp-hero h1 { font-size: 2.8rem; font-weight: 900; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .exp-hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        .exp-grid { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; display: flex; flex-direction: column; gap: 2rem; }
+        .exp-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(126,200,139,0.1); border-radius: 20px; padding: 0; overflow: hidden; transition: all 0.4s ease; }
+        .exp-card:hover { border-color: rgba(126,200,139,0.3); transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+        .exp-card-header { display: flex; align-items: center; gap: 15px; padding: 20px 25px; background: rgba(126,200,139,0.06); border-bottom: 1px solid rgba(126,200,139,0.08); cursor: pointer; }
+        .exp-avatar { width: 55px; height: 55px; border-radius: 15px; background: var(--accent-gradient); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 900; color: #0a1a0d; flex-shrink: 0; }
+        .exp-meta { flex: 1; }
+        .exp-meta h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 0 0 4px; }
+        .exp-meta span { font-size: 0.85rem; color: var(--text-secondary); }
+        .exp-badge { background: var(--accent-gradient); color: #0a1a0d; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; flex-shrink: 0; }
+        .exp-card-body { padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.3s ease; }
+        .exp-card-body.open { max-height: 3000px; padding: 25px; }
+        .exp-card-body p, .exp-card-body div { color: var(--text-secondary); line-height: 2; font-size: 0.95rem; white-space: pre-wrap; word-wrap: break-word; }
+        .exp-toggle { color: var(--accent-primary); font-size: 1.2rem; transition: transform 0.3s; flex-shrink: 0; }
+        .exp-toggle.open { transform: rotate(180deg); }
+        .exp-highlight { display: inline-block; background: rgba(126,200,139,0.1); color: var(--accent-primary); padding: 2px 8px; border-radius: 6px; font-weight: 600; }
+        .filter-bar { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .filter-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(126,200,139,0.15); color: var(--text-secondary); padding: 8px 20px; border-radius: 25px; cursor: pointer; font-family: 'Cairo'; font-size: 0.9rem; transition: all 0.3s; }
+        .filter-btn:hover, .filter-btn.active { background: var(--accent-gradient); color: #0a1a0d; font-weight: 700; border-color: transparent; }
+        .tips-section-page { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+        .tips-section-page h2 { font-size: 2rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 2rem; }
+        .tip-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(232,168,73,0.12); border-right: 4px solid var(--accent-secondary); border-radius: 16px; padding: 20px 25px; margin-bottom: 1.2rem; color: var(--text-secondary); line-height: 1.9; font-size: 0.95rem; white-space: pre-wrap; }
+        .tip-item:hover { border-color: rgba(232,168,73,0.35); background: rgba(232,168,73,0.04); }
+        .motivation-card { background: linear-gradient(135deg, rgba(126,200,139,0.08), rgba(91,168,200,0.08)); border: 1px solid rgba(126,200,139,0.15); border-radius: 20px; padding: 30px; text-align: center; margin-bottom: 1.5rem; font-size: 1.15rem; line-height: 2; color: var(--text-primary); font-weight: 600; }
+        .motivation-card i { font-size: 2rem; color: var(--accent-primary); margin-bottom: 10px; display: block; }
+        .back-home { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-primary); text-decoration: none; font-weight: 600; margin: 20px; padding: 10px 20px; border: 1px solid rgba(126,200,139,0.2); border-radius: 12px; transition: all 0.3s; }
+        .back-home:hover { background: rgba(126,200,139,0.1); }
+        .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(126,200,139,0.3), transparent); margin: 60px auto; max-width: 400px; }
+        @media (max-width: 768px) {
+            .exp-hero h1 { font-size: 2rem; }
+            .exp-card-header { padding: 15px; gap: 10px; }
+            .exp-avatar { width: 45px; height: 45px; font-size: 1.2rem; }
+            .exp-badge { font-size: 0.75rem; padding: 4px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    <div class="organic-blob blob-1"></div>
+    <div class="organic-blob blob-2"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> مسارك للـ +95</h1>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="#experiences">تجارب المتفوقين</a></li>
+                <li><a href="#tips-page">نصائح ذهبية</a></li>
+                <li><a href="#motivation">تحفيز</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="القائمة">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <!-- Hero -->
+    <section class="exp-hero">
+        <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-right"></i> العودة للرئيسية</a>
+        <h1><i class="fa-solid fa-trophy"></i> تجارب المتفوقين الحقيقية</h1>
+        <p>قصص نجاح من طلاب وطالبات حصلوا على أعلى الدرجات. تعلم من مساراتهم ومصادرهم وأسرارهم.</p>
+    </section>
+
+    <!-- Experiences -->
+    <section id="experiences" class="exp-grid">
+
+        <!-- Experience 1: معاذ - 100 -->
+        <div class="exp-card fade-in">
+            <div class="exp-card-header" onclick="toggleExp(this)">
+                <div class="exp-avatar">م</div>
+                <div class="exp-meta">
+                    <h3>تجربة معاذ — الدرجة الكاملة</h3>
+                    <span><i class="fa-solid fa-book"></i> ناصر + فرح + أحمد سكول &bull; مدة ٤-٧ شهور</span>
+                </div>
+                <span class="exp-badge">💯 100</span>
+                <i class="fa-solid fa-chevron-down exp-toggle"></i>
+            </div>
+            <div class="exp-card-body">
+                <div>
+<strong>المصادر:</strong>
+• التأسيس: كتاب ناصر عبدالكريم + كتاب النبلاء (أحياء)
+• الفيزياء: فرح إبراهيم + أبو راما تكنوقراطية
+• الرياضيات: فرح إبراهيم + عبدالوهاب العوهلي
+• الكيمياء: فرح إبراهيم + محمد العمري
+• الأحياء: أحمد سكول (شامل المنهج + ناصر + التجميعات مجاناً)
+
+<strong>طريقة المذاكرة:</strong>
+• الفيزياء: شرح فرح ← حل أسئلة ناصر ← الرجوع للمقطع للصعب
+• الرياضيات: نفس المنهج مع فرح + العوهلي
+• الكيمياء: محمد العمري + فرح للنقاط الصعبة
+• الأحياء: أحمد سكول للمناهج + تقاويم الفصول
+
+<strong>أهم التجميعات:</strong>
+١- غشام ٢- الحوت (فترات + شامل) ٣- سايفر ٤- الكنز ٥- فرح (فيزياء) ٦- جهاد
+
+<strong>المدة المناسبة:</strong> ٤-٧ شهور حسب مستواك ومجهودك اليومي
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience 2: أنس - 95 -->
+        <div class="exp-card fade-in">
+            <div class="exp-card-header" onclick="toggleExp(this)">
+                <div class="exp-avatar">أ</div>
+                <div class="exp-meta">
+                    <h3>تجربة أنس — شاملة ومفصّلة</h3>
+                    <span><i class="fa-solid fa-book"></i> ناصر + يلو + غشام &bull; ٣-٤ شهور</span>
+                </div>
+                <span class="exp-badge">⭐ +95</span>
+                <i class="fa-solid fa-chevron-down exp-toggle"></i>
+            </div>
+            <div class="exp-card-body">
+                <div>
+<strong>التأسيس:</strong> ناصر العبدالكريم 24 (كل المواد إلا الأحياء من يلو)
+التجميعات: غشام (ريض/فيز/كيم) + يلو كل المواد
+
+<strong>الفيزياء:</strong> أسهل مادة! شرح فرح إبراهيم رهيب والشرائح جاهزة
+<strong>الكيمياء:</strong> ناصر + محمد العمري "الأسطورة" — يفهم ويشرح بطريقة أكاديمية
+<strong>الرياضيات:</strong> مادة دسمة لكن ممكنة. شرح مهند + العوهلي + ناديه بدوي
+<strong>الأحياء:</strong> يلو + د. طلحة (شامل + ملون + مريح + يربط المعلومات)
+
+<strong>نصائح ذهبية:</strong>
+• المتشابهات بين المواد مهمة جداً — قياس يركز عليها
+• استخدم جهاز خاص بالمذاكرة (لابتوب) بعيداً عن الجوال
+• اجعل بيئة المذاكرة تحفيزية — صور تحفيزية، تغيير المكان
+• نام بقدر كافي ولا تلخبط نومك
+• أي سؤال صعب سجله واحله ثاني يوم
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience 3: محمد - 100 -->
+        <div class="exp-card fade-in">
+            <div class="exp-card-header" onclick="toggleExp(this)">
+                <div class="exp-avatar">م</div>
+                <div class="exp-meta">
+                    <h3>تجربة محمد — من صفر إلى المئوية</h3>
+                    <span><i class="fa-solid fa-book"></i> يلو + ناصر + غشام &bull; ٤ شهور تقريباً</span>
+                </div>
+                <span class="exp-badge">💯 100</span>
+                <i class="fa-solid fa-chevron-down exp-toggle"></i>
+            </div>
+            <div class="exp-card-body">
+                <div>
+<strong>الرياضيات:</strong> يلو شرح نادية + محمد البلوي + أينشتاين (أفضل شرح رياضيات)
+<strong>الأحياء:</strong> أحمد سكول "جبار جداً" + يلو — المادة تحتاج مراجعة مستمرة
+<strong>الكيمياء:</strong> يلو + محمد العمري "أفضل من درس الكيمياء بلا منازع"
+<strong>الفيزياء:</strong> فرح إبراهيم + أينشتاين
+
+<strong>طريقة المذاكرة:</strong>
+• كنت أتأسس مادتين أو ثلاث باليوم
+• بعد كل مادة أخلصها ← مباشرة أحل تجميعاتها
+• الرياضيات مادة "تافهة جداً" للي يتدرب بكثرة!
+• المراجعة أساسية — "اذا ما راجعت اعتبر انك ما ذاكرت"
+
+<strong>التجميعات:</strong> يلو + أينشتاين + غشام + ناصر
+<strong>التسريبات:</strong> يلو + أينشتاين + قناة محمد بالتليجرام
+
+<strong>أهم نصيحة:</strong> المحافظة على الصلوات والوتر والضحى — "أقسم بالله هي الي بتنفعكم"
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience 4: نوره - 97 -->
+        <div class="exp-card fade-in">
+            <div class="exp-card-header" onclick="toggleExp(this)">
+                <div class="exp-avatar">ن</div>
+                <div class="exp-meta">
+                    <h3>تجربة نورة — من مدرسة عالمية للـ+97</h3>
+                    <span><i class="fa-solid fa-book"></i> يلو + ناصر + فرح &bull; مسار صحي</span>
+                </div>
+                <span class="exp-badge">🌟 97</span>
+                <i class="fa-solid fa-chevron-down exp-toggle"></i>
+            </div>
+            <div class="exp-card-body">
+                <div>
+<strong>ملاحظة مهمة:</strong> كنت بمدرسة عالمية ومنهجي إنجليزي — اختبرت بالعربي وما كان عائق!
+
+<strong>الفيزياء:</strong> فرح إبراهيم + يلو + ناصر. كنت أعلق القوانين على جدار مكتبي
+<strong>الكيمياء:</strong> محمد العمري ممتاز + فرح للمركبات العضوية
+<strong>الرياضيات:</strong> يلو — انتبهوا كتاب عماد مافاد لأن شرحه مبني على أسئلة المنهج لا التحصيلي
+<strong>الأحياء:</strong> يلو + د. طلحة — اعتمدت كلياً على يلو
+
+<strong>التجميعات:</strong> غشام + يلو + الحوت فترات + سايفر + بصمة فرح
+<strong>التسريبات:</strong> يلو + سايفر
+
+<strong>نصيحة:</strong> الفترة الأولى 78 والثانية 90+ — الفرق؟ عدت غشام مرات وذاكرته كويس!
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience 5: فهد - 99 -->
+        <div class="exp-card fade-in">
+            <div class="exp-card-header" onclick="toggleExp(this)">
+                <div class="exp-avatar">ف</div>
+                <div class="exp-meta">
+                    <h3>تجربة فهد — ٩٩ بفضل التنظيم</h3>
+                    <span><i class="fa-solid fa-book"></i> يلو + فرح + غشام &bull; ٤ شهور</span>
+                </div>
+                <span class="exp-badge">🔥 99</span>
+                <i class="fa-solid fa-chevron-down exp-toggle"></i>
+            </div>
+            <div class="exp-card-body">
+                <div>
+<strong>الرياضيات:</strong> أجمل مادة! يلو شرح صالحة العسيري — أخذت ٢٠ يوم
+<strong>الكيمياء:</strong> أسهل مادة — محمد العمري + يلو — ١٤ يوم
+<strong>الأحياء:</strong> ممتعة! أحمد سكول "رهيب جداً" + يلو
+<strong>الفيزياء:</strong> فرح إبراهيم
+
+<strong>قاعدة ذهبية:</strong> بعد كل درس لازم تأخذ تجميعة — ضروري ضروري!
+
+<strong>التدريب:</strong> يلو + غشام + أينشتاين (تجميع + توقعات)
+
+<strong>التسريبات:</strong> "محمد ثم محمد ثم محمد" — طلع من الاختبار لقى أسئلته عنده!
+
+<strong>نصيحة:</strong> طبيعي تحس بخوف وقلق — حافظ على أعصابك وخذها تغيير جو
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience 6: عبدالعزيز - 100 بالفترتين -->
+        <div class="exp-card fade-in">
+            <div class="exp-card-header" onclick="toggleExp(this)">
+                <div class="exp-avatar">ع</div>
+                <div class="exp-meta">
+                    <h3>تجربة عبدالعزيز — مئوية بالفترتين!</h3>
+                    <span><i class="fa-solid fa-book"></i> ناصر + يلو + أحمد سكول &bull; ٦-٧ شهور</span>
+                </div>
+                <span class="exp-badge">💎 100×2</span>
+                <i class="fa-solid fa-chevron-down exp-toggle"></i>
+            </div>
+            <div class="exp-card-body">
+                <div>
+<strong>حقيقة مهمة:</strong> "مافي طريق واحد لل100 — الي يقولك عكس كذا يبي يستغلك للترويج"
+
+<strong>الكيمياء:</strong> ناصر + محمد العمري (أساسي صفر بالكلمة! وقدر يجيب 100)
+<strong>الفيزياء:</strong> فرح إبراهيم + تكنوقراطية + تجميع الحوت الشامل كتدريب
+<strong>الرياضيات:</strong> المعاصر + ناصر + العوهلي (شرح المناهج كاملة + التحصيلي)
+<strong>الأحياء:</strong> أحمد سكول (المناهج الطويلة) + ملخص يلو + د. طلحة
+
+<strong>التجميعات بالترتيب:</strong>
+١- غشام (الأهم بلا منازع، مجاني)
+٢- الكنز (مجاني)
+٣- الحوت فترات 21 و 22
+٤- الحوت الشامل الكبير
+
+<strong>حقيقة عن الاختبار:</strong>
+• ٦٠-٦٥% من الأسئلة نسخ لصق من التجميعات
+• ~١٠% أسئلة مسربة من أيام سابقة
+• الباقي أسئلة بصيغ مختلفة أو تعويض بقوانين
+• "الأحياء ٩٩% من أسئلته منسوخة من التجميعات بالحرف"
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience 7: طالبة 100 بالفترتين -->
+        <div class="exp-card fade-in">
+            <div class="exp-card-header" onclick="toggleExp(this)">
+                <div class="exp-avatar">ت</div>
+                <div class="exp-meta">
+                    <h3>تجربة طالبة — مئوية "غريبة جداً"</h3>
+                    <span><i class="fa-solid fa-book"></i> أينشتاين + فرح + ناصر &bull; بدأت متأخرة</span>
+                </div>
+                <span class="exp-badge">💎 100×2</span>
+                <i class="fa-solid fa-chevron-down exp-toggle"></i>
+            </div>
+            <div class="exp-card-body">
+                <div>
+<strong>القصة:</strong> بدأت شهر ٥ بشكل متهاون — كل مادة أقعد عليها شهر! نصف شهر ٨ تحطمت لأنها ناسية كل شي ولا راجعت. أمها قالت: "تختبرين يعني تختبرين لو جبتي ٥٠!"
+
+<strong>نقطة التحول:</strong> نصف شهر ٩ شدت شددها — ذاكرت في كل مكان. خلصت الأحياء بالعيد ثم تجميعات بذمة وضمير
+
+<strong>المصادر:</strong>
+• ناصر ٢٤ + أينشتاين (كل المواد عدا الفيزياء)
+• الفيزياء: فرح إبراهيم
+• غشام للتدريب فقط
+• خرائط مفاهيم ناصر ٢٥ للمراجعة
+
+<strong>السر:</strong>
+• صلاة الوتر والقيام — "معجزة معجزة معجزة"
+• قراءة سورة يس
+• الدعاء: "اللهم إني أتبرأ من حولي وقوتي وألجأ إلى حولك وقوتك"
+
+<strong>مفاجأة:</strong> الفترة الأولى ٢ خطأ فقط — والثانية فوق ١٠-١٥ خطأ — وجابت ١٠٠! (أسئلة غير محسوبة)
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience 8: طالبة 97+ -->
+        <div class="exp-card fade-in">
+            <div class="exp-card-header" onclick="toggleExp(this)">
+                <div class="exp-avatar">ط</div>
+                <div class="exp-meta">
+                    <h3>تجربة طالبة — ٧ شهور وخطة مفصّلة</h3>
+                    <span><i class="fa-solid fa-book"></i> يلو + ناصر + المعاصر &bull; ٧ شهور</span>
+                </div>
+                <span class="exp-badge">🌟 +97</span>
+                <i class="fa-solid fa-chevron-down exp-toggle"></i>
+            </div>
+            <div class="exp-card-body">
+                <div>
+<strong>نصيحة البداية:</strong> ابدأوا بالرياضيات أولاً لأنه أطول وأصعب
+• الرياضيات: المعاصر + ناصر + شرح مهند (شهرين ونص)
+• الفيزياء: يلو + ناصر + فرح إبراهيم + أبو راما (٢٠ يوم)
+• الكيمياء: يلو + ناصر + محمد العمري (أسبوعين)
+• الأحياء: يلو + أحمد سكول (أسبوعين)
+
+<strong>مرحلة التجميعات (شهر ونص):</strong>
+غشام (٣ مرات!) ← يلو ← الحوت فترات ← سايفر ← بصمة فرح
+
+<strong>السر الأهم:</strong> "المراجعة أهم شي لا تهملونها أبد"
+• مراجعة يومية: قبل الدرس الجديد راجع السابق
+• مراجعة مكثفة: شاملة لكل مادة دورياً
+• كتاب ناصر راجعته ٣-٤ مرات!
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Tips Section -->
+    <section id="tips-page" class="tips-section-page">
+        <h2><i class="fa-solid fa-lightbulb"></i> نصائح ذهبية من المتفوقين</h2>
+        
+        <div class="tip-item fade-in">
+            <strong>🔑 المراجعة أهم من المذاكرة:</strong> "مشكلتي إني خلصت الرياضيات برمضان وكنت فاهمة، بس ما كنت أراجع. يوم قرب الاختبار وجيت أحل تجميعات ما قدرت أحل أول درس! اضطريت أعيدها بالكامل."
+        </div>
+        <div class="tip-item fade-in">
+            <strong>🔑 التدريب بعد كل درس:</strong> "أفضل طريقة هي وقت ما تخلص الدرس ترجع تحل الأسئلة لحالك من جديد + تحل تجميعات عليه. بكذا تثبت المعلومة."
+        </div>
+        <div class="tip-item fade-in">
+            <strong>🔑 اختر الأستاذ المناسب لك:</strong> "أكبر غلط إنك تستمر على أستاذ ما يناسبك فقط لأنه معروف. خذ الي يناسبك مو الي يناسب غيرك."
+        </div>
+        <div class="tip-item fade-in">
+            <strong>🔑 القوانين أساس كل شيء:</strong> "القوانين إذا ما فلحت فيها ما راح تفلح بالباقي. حفظ وفهم — أهم شيء ما تنسى ولا قانون."
+        </div>
+        <div class="tip-item fade-in">
+            <strong>🔑 ابدأ بالرياضيات أو الفيزياء:</strong> "لأنهم يعتمدون على الفهم. والأحياء خلّها آخر مادة لأنها كلها حفظ."
+        </div>
+        <div class="tip-item fade-in">
+            <strong>🔑 يوم مراجعة أسبوعي:</strong> "خصص يوم من الأسبوع لمراجعة القوانين والأغلاط. هذا يفرق فرق كبير."
+        </div>
+        <div class="tip-item fade-in">
+            <strong>🔑 لا تتشتت بالمصادر:</strong> "حدد مصدرك واعتمد على مصدر واحد للتأسيس. التشتت أكبر عدو!"
+        </div>
+        <div class="tip-item fade-in">
+            <strong>🔑 التجميعات مكملة للتأسيس:</strong> "ما فيه تأسيس بدون تدريب ولا تدريب بدون تأسيس — هم مكملين لبعض."
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Motivation Section -->
+    <section id="motivation" class="tips-section-page">
+        <h2><i class="fa-solid fa-fire"></i> تحفيز وإلهام</h2>
+        
+        <div class="motivation-card fade-in">
+            <i class="fa-solid fa-bolt"></i>
+            "بينما هناك من يعمل يومياً وبشكل متواصل ليصنع مستقبله، تختار أنت التأجيل والتسويف. حين تراهم ينجحون لا تقل أن الحظ خانك، بل اعترف أنك أنت من خذلت نفسك حين فضلت الراحة على السعي."
+        </div>
+        <div class="motivation-card fade-in">
+            <i class="fa-solid fa-rocket"></i>
+            "التحصيلي مو صعب وما يتطلب منك قدرات عقلية خارقة، يحتاج اجتهادك واستمراريتك في المراجعة فقط."
+        </div>
+        <div class="motivation-card fade-in">
+            <i class="fa-solid fa-star"></i>
+            "إن لم تبدأ بمذاكرتك الآن، فمتى؟ المدة المتبقية قادرة توصلك لدرجة أعلى من +95. الفرصة لسى بيدك. شدوا حيلكم، كل ما زادت ساعات تركيزكم كل ما ارتفعت الدرجة بإذن الله."
+        </div>
+        <div class="motivation-card fade-in">
+            <i class="fa-solid fa-heart"></i>
+            "ذهب الكثير وبقي الكثير — لا تفقد الأمل. كل مجتهد له نصيب."
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="border-top: 1px solid rgba(126,200,139,0.1); margin-top: 40px;">
+        <div class="footer-content">
+            <p style="color:var(--text-secondary)">جُمعت هذه التجارب من قنوات تليجرام متخصصة بالتحصيلي. شكراً لكل من شارك تجربته لنفع الآخرين.</p>
+            <a href="index.html" class="btn-primary" style="margin-top:15px; display:inline-flex;"><i class="fa-solid fa-home"></i> العودة للصفحة الرئيسية</a>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 | مسارك للـ +95</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+    // Toggle experience cards
+    function toggleExp(header) {
+        const body = header.nextElementSibling;
+        const icon = header.querySelector('.exp-toggle');
+        body.classList.toggle('open');
+        icon.classList.toggle('open');
+    }
+
+    // Reuse main script features
+    document.addEventListener("DOMContentLoaded", () => {
+        // Particles
+        const canvas = document.getElementById('particles-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+            class Particle {
+                constructor() { this.reset(); }
+                reset() { this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height; this.size=Math.random()*2+0.5; this.speedX=(Math.random()-0.5)*0.3; this.speedY=(Math.random()-0.5)*0.3; this.opacity=Math.random()*0.3+0.1; }
+                update() { this.x+=this.speedX; this.y+=this.speedY; if(this.x<0||this.x>canvas.width)this.speedX*=-1; if(this.y<0||this.y>canvas.height)this.speedY*=-1; }
+                draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fillStyle=`rgba(126,200,139,${this.opacity})`; ctx.fill(); }
+            }
+            for(let i=0;i<35;i++) particles.push(new Particle());
+            function animate() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate); }
+            animate();
+        }
+
+        // Hamburger
+        const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('nav-links'),overlay=document.getElementById('mobile-overlay');
+        function closeMenu(){hamburger.classList.remove('active');navLinks.classList.remove('open');overlay.classList.remove('active');document.body.style.overflow='';}
+        if(hamburger) hamburger.addEventListener('click',()=>{const o=navLinks.classList.contains('open');if(o)closeMenu();else{hamburger.classList.add('active');navLinks.classList.add('open');overlay.classList.add('active');document.body.style.overflow='hidden';}});
+        if(overlay) overlay.addEventListener('click',closeMenu);
+        navLinks.querySelectorAll('a').forEach(l=>l.addEventListener('click',closeMenu));
+
+        // Navbar scroll
+        const navbar=document.getElementById('navbar');
+        window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>80);});
+
+        // Back to top
+        const btt=document.getElementById('back-to-top');
+        window.addEventListener('scroll',()=>{btt.classList.toggle('visible',window.scrollY>500);});
+        if(btt) btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+        // Scroll animations
+        const faders=document.querySelectorAll('.fade-in');
+        const obs=new IntersectionObserver((entries,observer)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('appear');observer.unobserve(e.target);}});},{threshold:0.1});
+        faders.forEach(f=>obs.observe(f));
+    });
+    </script>
+</body>
+</html>
