@@ -11,7 +11,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
     <!-- Navbar -->
@@ -143,8 +143,12 @@
                         <span>النتيجة: <span id="q-score">0</span></span>
                     </div>
                     
-                    <div class="question-image-container" style="border-radius:8px; padding:10px; margin-bottom:1.5rem; text-align:center;">
-                        <img id="question-img" src="" alt="سؤال التحصيلي" style="max-width:100%; height:auto; filter: invert(1) hue-rotate(180deg) brightness(1.5); mix-blend-mode: screen;">
+                    <div id="question-text" style="font-size: 1.4rem; font-weight: bold; margin-bottom: 1.5rem; text-align: right; white-space: pre-wrap; line-height: 1.8;">
+                        <!-- Question text injected here -->
+                    </div>
+                    
+                    <div id="question-image-container" class="question-image-container hidden" style="border-radius:8px; padding:10px; margin-bottom:1.5rem; text-align:center;">
+                        <img id="question-img" src="" alt="مرفق السؤال" style="max-width:100%; height:auto; filter: invert(1) hue-rotate(180deg) brightness(1.5); mix-blend-mode: screen;">
                     </div>
                     
                     <div class="options-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom: 1.5rem;">
@@ -208,6 +212,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=3"></script>
 </body>
 </html>
