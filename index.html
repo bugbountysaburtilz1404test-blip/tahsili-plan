@@ -3,42 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة التحصيلي والقدرات الشاملة</title>
+    <title>مسارك للـ +95 | منصة التحصيلي والقدرات الشاملة</title>
+    <meta name="description" content="دليلك الشامل للتحصيلي والقدرات: خطط مذاكرة ذكية، بنك أسئلة تفاعلي، نصائح ذهبية من أصحاب الخبرة. مجاني بالكامل!">
     <!-- Google Fonts: Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
+    <!-- Particles Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Organic Blobs -->
     <div class="organic-blob blob-1"></div>
     <div class="organic-blob blob-2"></div>
     <div class="organic-blob blob-3"></div>
 
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <h1 class="logo"><i class="fa-solid fa-graduation-cap"></i> مسارك للـ +95</h1>
-            <ul class="nav-links">
-            
-            
-<li><a href="#hero">الرئيسية</a></li>
-            <li><a href="#tips">النصائح الذهبية</a></li>
-            <li><a href="#ai-schedule">صانع الجداول</a></li>
-            <li><a href="#quiz">بنك الأسئلة</a></li>
-            <li><a href="#channels">قنوات تهمك</a></li>
-            <li><a href="#contact" class="btn-primary-small">تواصل معنا</a></li>
-        </ul>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">الرئيسية</a></li>
+                <li><a href="#tips">النصائح الذهبية</a></li>
+                <li><a href="#ai-schedule">صانع الجداول</a></li>
+                <li><a href="#quiz">بنك الأسئلة</a></li>
+                <li><a href="#channels">قنوات تهمك</a></li>
+                <li><a href="#contact" class="btn-primary-small">تواصل معنا</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header id="hero" class="hero-section">
         <div class="hero-content fade-in">
-            <h2 class="hero-title">تفوق في <span class="highlight">التحصيلي والقدرات</span> بثقة</h2>
+            <h2 class="hero-title">تفوق في <span class="highlight" id="typed-text">التحصيلي والقدرات</span> بثقة</h2>
             <p class="hero-subtitle">دليلك الشامل، خطط مذاكرة احترافية، وأدوات ذكية لمساعدتك في تحقيق طموحك.</p>
             
             <div class="free-notice glass-card">
@@ -54,26 +65,52 @@
         </div>
     </header>
 
+    <!-- Stats Section -->
+    <section class="stats-section fade-in">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fa-solid fa-users stat-icon green"></i>
+                <span class="stat-number" data-target="1200">0</span>
+                <span class="stat-label">طالب وطالبة استفادوا</span>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-clipboard-question stat-icon gold"></i>
+                <span class="stat-number" data-target="500">0</span>
+                <span class="stat-label">سؤال تدريبي</span>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-star stat-icon blue"></i>
+                <span class="stat-number" data-target="95">0</span>
+                <span class="stat-label">متوسط درجات المستخدمين</span>
+            </div>
+        </div>
+    </section>
+
     <!-- Tips & Plan Section -->
     <section id="tips" class="tips-section">
-        <h2 class="section-title">النصائح الذهبية للـ 40 يوم</h2>
+        <h2 class="section-title fade-in">النصائح الذهبية للـ 40 يوم</h2>
+        <p class="section-subtitle fade-in">نصائح مجرّبة من أصحاب +95 لمساعدتك في رسم مسار النجاح</p>
         <div class="tips-grid">
             <div class="tip-card glass-card fade-in">
+                <span class="tip-number">01</span>
                 <div class="icon-box"><i class="fa-solid fa-list-check"></i></div>
                 <h3>الأولويات أولاً</h3>
                 <p>لا تبدأ التحصيلي إلا بعد ما تقفل القدرات (+95). لا تدع التحصيلي يشغلك عن أساس القدرات.</p>
             </div>
-            <div class="tip-card glass-card fade-in" style="transition-delay: 0.1s;">
+            <div class="tip-card glass-card fade-in">
+                <span class="tip-number">02</span>
                 <div class="icon-box"><i class="fa-solid fa-book-open-reader"></i></div>
                 <h3>المصدر ليس المشكلة</h3>
                 <p>كل المصادر مميزة (يلو، عبدالكريم، غشام، إلخ). اختر الذي يناسبك، المهم هو الفهم والتطبيق.</p>
             </div>
-            <div class="tip-card glass-card fade-in" style="transition-delay: 0.2s;">
+            <div class="tip-card glass-card fade-in">
+                <span class="tip-number">03</span>
                 <div class="icon-box"><i class="fa-solid fa-rotate-right"></i></div>
                 <h3>المراجعة هي المفتاح</h3>
                 <p>تحصيلي بدون مراجعة = لم تستفد شيئاً! راجع يومياً وطبّق على التجميعات باستمرار.</p>
             </div>
-            <div class="tip-card glass-card fade-in" style="transition-delay: 0.3s;">
+            <div class="tip-card glass-card fade-in">
+                <span class="tip-number">04</span>
                 <div class="icon-box"><i class="fa-solid fa-book"></i></div>
                 <h3>الدفتر الخارجي</h3>
                 <p>سجّل القوانين المكتشفة في دفتر صغير لكل مادة (ما عدا الأحياء) ليسهل عليك تذكرها لاحقاً.</p>
@@ -87,35 +124,47 @@
             <div class="ai-header">
                 <i class="fa-solid fa-robot ai-icon"></i>
                 <h2 class="section-title" style="margin-bottom: 5px;">صانع الجداول بالذكاء الاصطناعي</h2>
-                <p>دعنا نخطط لك جدولك بذكاء ليناسب مستواك والفترة المتبقية.</p>
+                <p style="color:var(--text-secondary)">دعنا نخطط لك جدولك بذكاء ليناسب مستواك والفترة المتبقية.</p>
             </div>
 
             <form id="aiForm" class="ai-form">
                 <div class="form-group">
                     <label for="studentName">اسمك الأول:</label>
-                    <input type="text" id="studentName" placeholder="أدخل اسمك" required>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="studentName" placeholder="أدخل اسمك" required>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="studentLevel">مستواك الحالي تقريباً:</label>
-                    <select id="studentLevel" required>
-                        <option value="">-- اختر مستواك --</option>
-                        <option value="beginner">مبتدئ (أقل من 70)</option>
-                        <option value="intermediate">متوسط (70 - 85)</option>
-                        <option value="advanced">متقدم (أعلى من 85)</option>
-                    </select>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <select id="studentLevel" required>
+                            <option value="">-- اختر مستواك --</option>
+                            <option value="beginner">مبتدئ (أقل من 70)</option>
+                            <option value="intermediate">متوسط (70 - 85)</option>
+                            <option value="advanced">متقدم (أعلى من 85)</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="studyDays">الأيام المتاحة للمذاكرة:</label>
-                    <select id="studyDays" required>
-                        <option value="">-- اختر المدة المتبقية --</option>
-                        <option value="30">30 يوماً</option>
-                        <option value="40" selected>40 يوماً (الخطة الموصى بها)</option>
-                        <option value="60">60 يوماً وأكثر</option>
-                    </select>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <select id="studyDays" required>
+                            <option value="">-- اختر المدة المتبقية --</option>
+                            <option value="30">30 يوماً</option>
+                            <option value="40" selected>40 يوماً (الخطة الموصى بها)</option>
+                            <option value="60">60 يوماً وأكثر</option>
+                        </select>
+                    </div>
                 </div>
                 <button type="submit" class="btn-primary w-100">
                     <i class="fa-solid fa-bolt"></i> توليد الجدول السحري 
                 </button>
+                <div class="progress-bar-container hidden" id="ai-progress">
+                    <div class="progress-bar-fill" id="ai-progress-fill"></div>
+                </div>
             </form>
 
             <div id="loading" class="loading-state hidden">
@@ -130,12 +179,12 @@
     </section>
 
     <!-- Quiz Bank Section -->
-    <section id="quiz" class="ai-section" style="background: linear-gradient(180deg, rgba(30,35,45,0.3) 0%, transparent 100%);">
+    <section id="quiz" class="ai-section" style="background: linear-gradient(180deg, rgba(15,26,18,0.3) 0%, transparent 100%);">
         <div class="ai-container glass-card fade-in" style="max-width: 800px;">
             <div class="ai-header">
                 <i class="fa-solid fa-graduation-cap ai-icon"></i>
                 <h2 class="section-title" style="margin-bottom: 5px;">بنك الأسئلة التفاعلي</h2>
-                <p>تدرّب على أحدث التجميعات الحقيقية وصحح إجاباتك فوراً.</p>
+                <p style="color:var(--text-secondary)">تدرّب على أحدث التجميعات الحقيقية وصحح إجاباتك فوراً.</p>
             </div>
 
             <div id="quiz-container" class="quiz-container text-center">
@@ -144,17 +193,20 @@
                 </button>
                 
                 <div id="quiz-arena" class="hidden" style="margin-top: 2rem;">
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 0%"></div>
+                    </div>
                     <div class="score-board" style="display:flex; justify-content:space-between; margin-bottom: 1rem; color: var(--accent-primary); font-weight:bold;">
                         <span>السؤال: <span id="q-counter">1</span> / <span id="q-total">0</span></span>
                         <span>النتيجة: <span id="q-score">0</span></span>
                     </div>
                     
-                    <div id="question-text" style="font-size: 1.4rem; font-weight: bold; margin-bottom: 1.5rem; text-align: right; white-space: pre-wrap; line-height: 1.8;">
+                    <div id="question-text" style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1.5rem; text-align: right; white-space: pre-wrap; line-height: 1.9;">
                         <!-- Question text injected here -->
                     </div>
                     
-                    <div id="question-image-container" class="question-image-container hidden" style="border-radius:8px; padding:10px; margin-bottom:1.5rem; text-align:center;">
-                        <img id="question-img" src="" alt="مرفق السؤال" class="pdf-image-filter" style="max-width:100%; height:auto;">
+                    <div id="question-image-container" class="question-image-container hidden" style="border-radius:12px; padding:10px; margin-bottom:1.5rem; text-align:center;">
+                        <img id="question-img" src="" alt="مرفق السؤال" class="pdf-image-filter" style="max-width:100%; height:auto; border-radius:8px;">
                     </div>
                     
                     <div class="options-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom: 1.5rem;">
@@ -174,27 +226,32 @@
 
     <!-- Channels Section -->
     <section id="channels" class="channels-section">
-        <h2 class="section-title">قنوات تليجرام لا غنى عنها</h2>
+        <h2 class="section-title fade-in">قنوات تليجرام لا غنى عنها</h2>
+        <p class="section-subtitle fade-in">أفضل القنوات المتخصصة في التحصيلي والقدرات</p>
         <div class="channels-grid">
             <a href="https://t.me/moh_5519" target="_blank" class="channel-card glass-card fade-in">
                 <i class="fa-brands fa-telegram telegram-icon"></i>
                 <h3>محمد للتحصيلي</h3>
                 <p>شروحات وإرشادات شاملة</p>
+                <span class="channel-subs"><i class="fa-solid fa-users"></i> +5K</span>
             </a>
-            <a href="https://t.me/yellowqt1" target="_blank" class="channel-card glass-card fade-in" style="transition-delay: 0.1s;">
+            <a href="https://t.me/yellowqt1" target="_blank" class="channel-card glass-card fade-in">
                 <i class="fa-brands fa-telegram telegram-icon"></i>
                 <h3>يلو</h3>
                 <p>تجميعات وشروحات يلو الشهيرة</p>
+                <span class="channel-subs"><i class="fa-solid fa-users"></i> +10K</span>
             </a>
-            <a href="https://t.me/Ghasham222" target="_blank" class="channel-card glass-card fade-in" style="transition-delay: 0.2s;">
+            <a href="https://t.me/Ghasham222" target="_blank" class="channel-card glass-card fade-in">
                 <i class="fa-brands fa-telegram telegram-icon"></i>
                 <h3>غشام</h3>
                 <p>المصدر الموثوق للتجميعات</p>
+                <span class="channel-subs"><i class="fa-solid fa-users"></i> +8K</span>
             </a>
-            <a href="https://t.me/alm7nkinlt7sili" target="_blank" class="channel-card glass-card fade-in" style="transition-delay: 0.3s;">
+            <a href="https://t.me/alm7nkinlt7sili" target="_blank" class="channel-card glass-card fade-in">
                 <i class="fa-brands fa-telegram telegram-icon"></i>
                 <h3>أينشتاين</h3>
                 <p>تأسيس وتدريب مكثف</p>
+                <span class="channel-subs"><i class="fa-solid fa-users"></i> +3K</span>
             </a>
         </div>
     </section>
@@ -203,10 +260,17 @@
     <footer id="contact" class="footer">
         <div class="footer-content">
             <h2 class="footer-logo"><i class="fa-solid fa-graduation-cap"></i> مسارك للـ +95</h2>
-            <p>صُنع بكل حب لخدمة الطلاب والطالبات مجاناً.</p>
+            <p style="color:var(--text-secondary)">صُنع بكل حب لخدمة الطلاب والطالبات مجاناً.</p>
+            <div class="footer-links">
+                <a href="#hero">الرئيسية</a>
+                <a href="#tips">النصائح</a>
+                <a href="#ai-schedule">صانع الجداول</a>
+                <a href="#quiz">بنك الأسئلة</a>
+                <a href="#channels">القنوات</a>
+            </div>
             <div class="contact-box glass-card fade-in">
                 <h3>هل لديك استفسار أو اقتراح؟</h3>
-                <p>لا تتردد في التواصل معي ومشاركتي أفكارك لنجعل هذه المنصة أفضل.</p>
+                <p style="color:var(--text-secondary)">لا تتردد في التواصل معي ومشاركتي أفكارك لنجعل هذه المنصة أفضل.</p>
                 <a href="https://t.me/aaoove" target="_blank" class="btn-telegram">
                     <i class="fa-brands fa-telegram"></i> تواصل مع عبدالله الحربي
                 </a>
@@ -217,7 +281,12 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <!-- Scripts -->
-    <script src="script.js?v=7"></script>
+    <script src="script.js?v=10"></script>
 </body>
 </html>

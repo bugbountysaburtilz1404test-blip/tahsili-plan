@@ -1,116 +1,252 @@
-// Intersection Observer for scroll animations
+// ══════════════════════════════════════════════════════════════
+// مسارك للـ +95 — Premium Interactive Script
+// ══════════════════════════════════════════════════════════════
+
 document.addEventListener("DOMContentLoaded", () => {
-    // Theme Switch Option
-    const themeBtn = document.getElementById('theme-toggle');
-    const rootEl = document.documentElement;
-    const bodyEl = document.body;
-    
-    // Check local storage
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    setTheme(savedTheme);
-    
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            const currentTheme = rootEl.getAttribute('data-theme') || 'dark';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setTheme(newTheme);
-        });
-    }
-    
-    function setTheme(theme) {
-        rootEl.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        if(themeBtn) {
-            if(theme === 'dark') {
-                themeBtn.innerHTML = '<i class="fa-solid fa-sun" style="color:#DDA15E;"></i>';
-            } else {
-                themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+
+    // ─── Particles System ───
+    const canvas = document.getElementById('particles-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const PARTICLE_COUNT = 50;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.4 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(126, 200, 139, ${this.opacity})`;
+                ctx.fill();
             }
         }
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            // Draw connecting lines
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(126, 200, 139, ${0.06 * (1 - dist / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
     }
 
-    const faders = document.querySelectorAll('.fade-in');
-    
-    const appearOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    };
-    
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
+    // ─── Hamburger Menu ───
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.contains('open');
+            if (isOpen) {
+                closeMenu();
             } else {
+                hamburger.classList.add('active');
+                navLinks.classList.add('open');
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    }
+    if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    // ─── Navbar Scroll Effect ───
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // ─── Back to Top ───
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    if (backToTop) {
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ─── Scroll Animations (Intersection Observer) ───
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.12, rootMargin: "0px 0px -60px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
                 entry.target.classList.add('appear');
                 observer.unobserve(entry.target);
             }
         });
     }, appearOptions);
-    
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
+    faders.forEach(fader => appearOnScroll.observe(fader));
 
-    // AI Schedule Generator Logic
+    // ─── Animated Stat Counters ───
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                const duration = 2000;
+                const startTime = performance.now();
+                const suffix = el.getAttribute('data-suffix') || '';
+
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(eased * target);
+                    el.textContent = current.toLocaleString('ar-SA') + suffix;
+                    if (progress < 1) requestAnimationFrame(updateCounter);
+                    else el.textContent = target.toLocaleString('ar-SA') + '+';
+                }
+                requestAnimationFrame(updateCounter);
+                statsObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    statNumbers.forEach(s => statsObserver.observe(s));
+
+    // ─── Confetti Helper ───
+    function spawnConfetti(x, y) {
+        const colors = ['#22c55e', '#7EC88B', '#E8A849', '#5BA8C8', '#fbbf24', '#a78bfa'];
+        for (let i = 0; i < 30; i++) {
+            const piece = document.createElement('div');
+            piece.className = 'confetti-piece';
+            piece.style.left = (x + (Math.random() - 0.5) * 100) + 'px';
+            piece.style.top = (y + (Math.random() - 0.5) * 50) + 'px';
+            piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+            piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+            piece.style.width = (Math.random() * 8 + 4) + 'px';
+            piece.style.height = (Math.random() * 8 + 4) + 'px';
+            document.body.appendChild(piece);
+            setTimeout(() => piece.remove(), 1600);
+        }
+    }
+
+    // ─── AI Schedule Generator ───
     const aiForm = document.getElementById('aiForm');
     const loadingState = document.getElementById('loading');
     const aiResult = document.getElementById('aiResult');
     const resultBox = document.getElementById('aiResult');
-    const submitBtn = aiForm.querySelector('button');
+    const submitBtn = aiForm.querySelector('button[type="submit"]');
+    const aiProgressBar = document.getElementById('ai-progress');
+    const aiProgressFill = document.getElementById('ai-progress-fill');
 
     aiForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Form Values
         const name = document.getElementById('studentName').value;
         const level = document.getElementById('studentLevel').value;
         const days = document.getElementById('studyDays').value;
-        
-        // UI Updates
+
         submitBtn.style.display = 'none';
         aiResult.classList.add('hidden');
         loadingState.classList.remove('hidden');
-        
-        // Simulate AI Processing Network Request
-        setTimeout(() => {
-            loadingState.classList.add('hidden');
-            submitBtn.style.display = 'block';
-            submitBtn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> إعادة التوليد';
-            
-            // Build the dynamic response based on inputs
-            let planText = ``;
-            if (level === 'beginner') {
-                planText = `كطالب في البداية وتحتاج للوصول للـ +95 خلال ${days} يوماً، يجب التركيز ٦٠٪ على مرحلة التأسيس (فهم المفاهيم من ناصر عبدالكريم أو يلو) و ٤٠٪ للتدريب على التجميعات.`;
-            } else if (level === 'intermediate') {
-                planText = `مستواك ممتاز يا ${name}! وضعك الحالي يتيح لك تقسيم الـ ${days} يوماً إلى ٤٠٪ مراجعة سريعة لنقاط الضعف و ٦٠٪ حل تجميعات مكثفة (مثل تجميعات غشام والتدريب على سرعة الحل).`;
-            } else {
-                planText = `أنت في مرحلة متقدمة وما تحتاجه في الـ ${days} يوم المتبقية هو ١٠٠٪ تدريب على تسريبات وأصعب أفكار التجميعات، بالإضافة لمراجعة دورية لقوانين الدفتر الخارجي لضمان عدم النسيان.`;
-            }
+        aiProgressBar.classList.remove('hidden');
 
-            const htmlResponse = `
-                <h3 style="color: var(--accent-primary); margin-bottom: 10px;">
-                    <i class="fa-solid fa-check-circle"></i> تم بناء خطتك بنجاح يا ${name}!
-                </h3>
-                <p style="margin-bottom: 15px;">بناءً على المعطيات التي أدخلتها، هذا هو المسار الأمثل لك:</p>
-                <div style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent-purple);">
-                    <p><strong>استراتيجية المذاكرة:</strong> ${planText}</p>
-                    <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 10px 0;">
-                    <p style="font-size: 0.9em; color: var(--text-secondary);">
-                    <i class="fa-solid fa-lightbulb" style="color:#fbbf24;"></i> نصيحة إضافية: لا تنسَ أن الأحياء تعتمد على الحفظ المستمر، خصص لها وقتاً قبل النوم يومياً.
-                    </p>
-                </div>
-            `;
-            
-            resultBox.innerHTML = htmlResponse;
-            resultBox.classList.remove('hidden');
-            
-            // Scroll down a bit to see the result
-            resultBox.scrollIntoView({behavior: "smooth", block: "nearest"});
-            
-        }, 2000); // 2 second mock delay
+        // Animated progress bar
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 15 + 5;
+            if (progress > 90) progress = 90;
+            aiProgressFill.style.width = progress + '%';
+        }, 300);
+
+        setTimeout(() => {
+            clearInterval(progressInterval);
+            aiProgressFill.style.width = '100%';
+
+            setTimeout(() => {
+                loadingState.classList.add('hidden');
+                aiProgressBar.classList.add('hidden');
+                aiProgressFill.style.width = '0%';
+                submitBtn.style.display = 'flex';
+                submitBtn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> إعادة التوليد';
+
+                let planText = '';
+                if (level === 'beginner') {
+                    planText = `كطالب في البداية وتحتاج للوصول للـ +95 خلال ${days} يوماً، يجب التركيز ٦٠٪ على مرحلة التأسيس (فهم المفاهيم من ناصر عبدالكريم أو يلو) و ٤٠٪ للتدريب على التجميعات.`;
+                } else if (level === 'intermediate') {
+                    planText = `مستواك ممتاز يا ${name}! وضعك الحالي يتيح لك تقسيم الـ ${days} يوماً إلى ٤٠٪ مراجعة سريعة لنقاط الضعف و ٦٠٪ حل تجميعات مكثفة (مثل تجميعات غشام والتدريب على سرعة الحل).`;
+                } else {
+                    planText = `أنت في مرحلة متقدمة وما تحتاجه في الـ ${days} يوم المتبقية هو ١٠٠٪ تدريب على تسريبات وأصعب أفكار التجميعات، بالإضافة لمراجعة دورية لقوانين الدفتر الخارجي لضمان عدم النسيان.`;
+                }
+
+                const htmlResponse = `
+                    <h3 style="color: var(--accent-primary); margin-bottom: 10px;">
+                        <i class="fa-solid fa-check-circle"></i> تم بناء خطتك بنجاح يا ${name}!
+                    </h3>
+                    <p style="margin-bottom: 15px;">بناءً على المعطيات التي أدخلتها، هذا هو المسار الأمثل لك:</p>
+                    <div style="background: rgba(0,0,0,0.35); padding: 20px; border-radius: 16px; border-right: 4px solid var(--accent-primary);">
+                        <p><strong style="color:var(--accent-secondary)">⚡ استراتيجية المذاكرة:</strong> ${planText}</p>
+                        <hr style="border:0; border-top:1px solid rgba(255,255,255,0.08); margin: 12px 0;">
+                        <p style="font-size: 0.9em; color: var(--text-secondary);">
+                        <i class="fa-solid fa-lightbulb" style="color:#fbbf24;"></i> نصيحة إضافية: لا تنسَ أن الأحياء تعتمد على الحفظ المستمر، خصص لها وقتاً قبل النوم يومياً.
+                        </p>
+                    </div>
+                `;
+                resultBox.innerHTML = htmlResponse;
+                resultBox.classList.remove('hidden');
+                resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 400);
+        }, 2200);
     });
 
-    // Quiz System Logic
+    // ─── Quiz System ───
     const startQuizBtn = document.getElementById('start-quiz-btn');
     const quizArena = document.getElementById('quiz-arena');
     const questionImg = document.getElementById('question-img');
@@ -120,17 +256,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const qCounterEl = document.getElementById('q-counter');
     const qTotalEl = document.getElementById('q-total');
     const qScoreEl = document.getElementById('q-score');
+    const quizProgressFill = document.getElementById('quiz-progress-fill');
 
     let quizData = [];
     let currentQuestionIndex = 0;
     let score = 0;
     let answered = false;
 
-    // Fetch quiz data
-    
-    // المدمجة لتعمل بدون انترنت (Local Storage Data)
-    
-    // المدمجة لتعمل بدون انترنت (Local Storage Data)
+    // Quiz data embedded for offline use
     const rawData = [
     {
         "id": 1,
@@ -5267,11 +5400,17 @@ document.addEventListener("DOMContentLoaded", () => {
     quizData = rawData.sort(() => Math.random() - 0.5);
     qTotalEl.textContent = quizData.length;
 
-
+    // Update quiz progress bar
+    function updateQuizProgress() {
+        if (quizProgressFill && quizData.length > 0) {
+            const pct = ((currentQuestionIndex + 1) / quizData.length) * 100;
+            quizProgressFill.style.width = pct + '%';
+        }
+    }
 
     if (startQuizBtn) {
         startQuizBtn.addEventListener('click', () => {
-            if(quizData.length === 0) {
+            if (quizData.length === 0) {
                 alert('جارٍ تحميل الأسئلة... حاول مجدداً بعد قليل.');
                 return;
             }
@@ -5285,13 +5424,10 @@ document.addEventListener("DOMContentLoaded", () => {
         answered = false;
         answerFeedback.classList.add('hidden');
         nextQBtn.classList.add('hidden');
-        
+
         const q = quizData[currentQuestionIndex];
-        
-        // 1. Text Parsing
         document.getElementById('question-text').innerText = q.question || '';
-        
-        // 2. Geometry Image (Show only if exists)
+
         const imgContainer = document.getElementById('question-image-container');
         if (q.geometry) {
             questionImg.src = q.geometry;
@@ -5300,27 +5436,26 @@ document.addEventListener("DOMContentLoaded", () => {
             questionImg.src = '';
             imgContainer.classList.add('hidden');
         }
-        
-        qCounterEl.textContent = currentQuestionIndex + 1;
 
-        // Reset buttons & Text
+        qCounterEl.textContent = currentQuestionIndex + 1;
+        updateQuizProgress();
+
         optionsBtns.forEach(btn => {
             btn.classList.remove('correct-ans', 'wrong-ans');
             btn.disabled = false;
-            
+            btn.style.transform = '';
+
             const letter = btn.getAttribute('data-answer');
-            let optText = letter; // fallback
+            let optText = letter;
 
             if (q.options && q.options.length > 0) {
-                // If it's a list like ["أ : ٤", "ب : ٦", ...]
                 const match = q.options.find(o => o.trim().startsWith(letter));
                 if (match) {
                     optText = match;
                 } else if (q.options.length === 1) {
-                    // Try regex if merged in one line "أ : ٨ ب : ٩"
                     const rx = new RegExp(letter + '\\s*[:\\-]\\s*([^أبجد]+)');
                     const m = rx.exec(q.options[0]);
-                    if (m) optText = letter + " : " + m[1].trim();
+                    if (m) optText = letter + ' : ' + m[1].trim();
                 }
             }
             btn.innerText = optText;
@@ -5329,19 +5464,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     optionsBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            if(answered) return;
+            if (answered) return;
             answered = true;
-            
-            // Clean up invisible formatting character that might be in JSON from python
+
             const rawAns = quizData[currentQuestionIndex].answer;
             const currentAns = typeof rawAns === 'string' ? rawAns.replace(/[\u200B-\u200D\uFEFF]/g, '').trim() : rawAns;
             const selectedAnswer = e.target.getAttribute('data-answer');
-            
-            // Highlight correct and wrong
+
             optionsBtns.forEach(b => {
                 b.disabled = true;
                 const optAns = b.getAttribute('data-answer');
-                if(optAns === currentAns) {
+                if (optAns === currentAns) {
                     b.classList.add('correct-ans');
                 } else if (optAns === selectedAnswer) {
                     b.classList.add('wrong-ans');
@@ -5349,20 +5482,28 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             answerFeedback.classList.remove('hidden');
-            if(selectedAnswer === currentAns) {
+            if (selectedAnswer === currentAns) {
                 score++;
                 qScoreEl.textContent = score;
-                answerFeedback.innerHTML = '<i class="fa-solid fa-check-circle" style="color:#22c55e;"></i> إجابة صحيحة، بطل!';
+                answerFeedback.innerHTML = '<i class="fa-solid fa-check-circle" style="color:#22c55e;"></i> إجابة صحيحة، بطل! 🎉';
                 answerFeedback.style.color = '#22c55e';
+                // Confetti!
+                const rect = e.target.getBoundingClientRect();
+                spawnConfetti(rect.left + rect.width / 2, rect.top);
             } else {
                 answerFeedback.innerHTML = `<i class="fa-solid fa-times-circle" style="color:#ef4444;"></i> إجابة خاطئة! الصحيح هو: ${currentAns}`;
                 answerFeedback.style.color = '#ef4444';
             }
 
-            if(currentQuestionIndex < quizData.length - 1) {
+            if (currentQuestionIndex < quizData.length - 1) {
                 nextQBtn.classList.remove('hidden');
             } else {
-                answerFeedback.innerHTML += '<br><br>🎉 انتهت الأسئلة المتاحة! نتيجتك النهائية: ' + score + ' من ' + quizData.length;
+                const pct = Math.round((score / quizData.length) * 100);
+                answerFeedback.innerHTML += `<br><br>🎉 انتهت الأسئلة! نتيجتك: <strong>${score}</strong> من <strong>${quizData.length}</strong> (${pct}%)`;
+                if (pct >= 80) {
+                    spawnConfetti(window.innerWidth / 2, window.innerHeight / 2);
+                    setTimeout(() => spawnConfetti(window.innerWidth / 3, window.innerHeight / 3), 300);
+                }
             }
         });
     });
