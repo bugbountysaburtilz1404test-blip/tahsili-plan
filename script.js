@@ -1,6 +1,29 @@
 // Intersection Observer for scroll animations
 document.addEventListener("DOMContentLoaded", () => {
-     else {
+    // Theme Switch Option
+    const themeBtn = document.getElementById('theme-toggle');
+    const rootEl = document.documentElement;
+    const bodyEl = document.body;
+    
+    // Check local storage
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+    
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = rootEl.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+    }
+    
+    function setTheme(theme) {
+        rootEl.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        if(themeBtn) {
+            if(theme === 'dark') {
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun" style="color:#DDA15E;"></i>';
+            } else {
                 themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
             }
         }
